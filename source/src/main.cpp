@@ -1,8 +1,11 @@
 #include <iostream>
-#include "Entity.h"
+#include <memory>
+#include "Application.h"
 
 using namespace std;
 
-void main() {
-		
+void main(int argc, char** argv) {
+	shared_ptr<Infrastructure::Application> application = Infrastructure::Application::instance;
+	application->createMainWindow(&argc, argv);
+	application->enterSimulationLoop();
 }

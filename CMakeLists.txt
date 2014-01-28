@@ -13,6 +13,7 @@ set (CPP_DIR ${CPP_DIR} "source/src")
 # Add the executable
 add_executable (Fluid_Simulator
 	${HEADER_DIR}/Application.h		${CPP_DIR}/Application.cpp
+	${HEADER_DIR}/Program.h		${CPP_DIR}/Program.cpp
 	${CPP_DIR}/main.cpp)
 	
 #Add libraries

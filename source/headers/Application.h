@@ -3,23 +3,26 @@
 
 #include <memory>
 #include <GL/freeglut.h>
-#include "EntityManager.h"
 
 using namespace::std;
 
+/**
+ * Application class. Instantiates and manages the window and controls the simulation loop.
+ */
 namespace Infrastructure {
 	class Application
 	{
 	public:
-		Application();
+		static shared_ptr<Application> instance;
+		
 		~Application();
-
+		
+		void createMainWindow(int* argc, char** argv);
+		void enterSimulationLoop();
+	
 	private:
-		shared_ptr<EntityManager> entityManager;
-
-		void createMainWindow();
-		void beginGameLoop();
-		void gameLoop();
+		Application();
+		static void simulationLoop();
 	};
 }
 
