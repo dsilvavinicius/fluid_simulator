@@ -21,8 +21,17 @@ add_executable (Fluid_Simulator
 set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/libraries/lib/Win64")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/freeglut.lib")
+
 cmake_policy(SET CMP0015 NEW) # Use new policy in link_directories(): output absolute paths.
 target_link_libraries (Fluid_Simulator ${LIBS_DIR})
+
+set (DLL_WIN64_DIR ${DLL_WIN64_DIR} "${PROJECT_SOURCE_DIR}/libraries/bin/Win64")
+set (DLL_DIR ${DLL_DIR} "${DLL_WIN64_DIR}/freeglut.dll")
+
+add_custom_command(TARGET Fluid_Simulator POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${DLL_DIR}"
+        $<TARGET_FILE_DIR:Fluid_Simulator>)
 
 # add the install targets
 install (TARGETS Fluid_Simulator DESTINATION bin)
