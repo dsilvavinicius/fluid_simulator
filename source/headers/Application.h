@@ -9,7 +9,7 @@ using namespace::std;
 /**
  * Application class. Instantiates and manages the window and controls the simulation loop.
  */
-namespace Infrastructure {
+namespace infrastructure {
 	class Application
 	{
 	public:

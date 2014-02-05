@@ -1,6 +1,6 @@
 #include "Application.h"
 
-namespace Infrastructure {
+namespace infrastructure {
 	shared_ptr<Application> Application::instance{ shared_ptr<Application>(new Application) };
 	
 	Application::Application() {
@@ -26,11 +26,17 @@ namespace Infrastructure {
 	}
 
 	void Application::simulationLoop() {
+		glClearColor(0.f, 0.f, 0.f, 1.f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+		
 		glColor3f(1.f, 0.f, 0.f);
 		glBegin(GL_TRIANGLES);
 			glVertex2f(0.f, 0.f);
 			glVertex2f(1.f, 0.f);
 			glVertex2f(1.f, 1.f);
 		glEnd();
+
+		glutSwapBuffers();
 	}
 }
