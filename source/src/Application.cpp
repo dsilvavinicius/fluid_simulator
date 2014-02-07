@@ -1,8 +1,12 @@
 #include "Application.h"
 
 namespace infrastructure {
-	shared_ptr<Application> Application::instance{ shared_ptr<Application>(new Application) };
 	
+	Application& Application::getInstance() {
+		static Application app;
+		return app;
+	}
+
 	Application::Application() {
 
 	}

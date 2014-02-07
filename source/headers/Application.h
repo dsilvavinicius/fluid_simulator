@@ -13,15 +13,15 @@ namespace infrastructure {
 	class Application
 	{
 	public:
-		static shared_ptr<Application> instance;
-		
+		static Application& getInstance();
 		~Application();
-		
 		void createMainWindow(int* argc, char** argv);
 		void enterSimulationLoop();
 	
 	private:
 		Application();
+		Application(Application const&);
+		void operator=(Application const&);
 		static void simulationLoop();
 	};
 }

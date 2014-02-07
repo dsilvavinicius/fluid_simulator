@@ -1,12 +1,18 @@
 #include "Program.h"
 
 namespace infrastructure {
-	Program::Program()
-	{
+
+	CGcontext& getContext() {
+		static CGcontext cgContext = cgCreateContext();
+		return cgContext;
+	}
+	
+	Program::Program() {
+		
 	}
 
 
-	Program::~Program()
-	{
+	Program::~Program(){
+
 	}
 }
