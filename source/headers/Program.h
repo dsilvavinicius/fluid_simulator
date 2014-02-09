@@ -16,11 +16,10 @@ namespace infrastructure {
 	{
 	public:
 		static CGcontext& getContext();
-		Program();
+		Program(string& const sourceFileName);
 		~Program();
 	private:
-
-		string codeSource;
+		CGprogram& cgProgram;
 	};
 }
 

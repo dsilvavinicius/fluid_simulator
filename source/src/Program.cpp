@@ -1,3 +1,4 @@
+#include <fstream>
 #include "Program.h"
 
 namespace infrastructure {
@@ -7,8 +8,11 @@ namespace infrastructure {
 		return cgContext;
 	}
 	
-	Program::Program() {
+	Program::Program(string& const sourceFileName, CGprofile& const profile) {
+		ifstream inputStream;
+		inputStream.open(sourceFileName, ios::in);
 		
+		cgProgram = cgCreateProgram(getContext(), CG_SOURCE, );
 	}
 
 
