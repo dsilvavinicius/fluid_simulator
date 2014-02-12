@@ -11,7 +11,13 @@ void main(int argc, char** argv) {
 		application.createMainWindow(&argc, argv);
 		application.enterSimulationLoop();
 	}
+	catch (const runtime_error& e) {
+		cerr << "Runtime error: " << e.what() << endl;
+	}
+	catch (const exception& e) {
+		cerr << "Error ocurred: " << e.what() << endl;
+	}
 	catch (...) {
-		exception_ptr exceptionPtr = current_exception();
+		cerr << "Unknown error ocurred." << endl;
 	}
 }
