@@ -10,7 +10,7 @@ add_executable (Fluid_Simulator
 
 target_link_libraries (Fluid_Simulator Fluid_Engine)
 
-install_dlls (Fluid_Simulator)
+install_dlls (${ENGINE_DLL_WIN64_DIR} Fluid_Simulator)
 
 # add the install targets
 install (TARGETS Fluid_Simulator DESTINATION ${PROJECT_BINARY_DIR}/simulator)

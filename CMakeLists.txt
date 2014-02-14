@@ -2,13 +2,13 @@ cmake_minimum_required (VERSION 2.6)
 project (Fluid_Simulator)
 
 # Dlls dir.
-set (DLL_WIN64_DIR ${DLL_WIN64_DIR} "${PROJECT_SOURCE_DIR}/engine/libraries/bin/Win64")
+set (ENGINE_DLL_WIN64_DIR ${ENGINE_DLL_WIN64_DIR} "${PROJECT_SOURCE_DIR}/engine/libraries/bin/Win64")
 
 # Copy dlls as post build process to a target.
-macro (install_dlls target)
+macro (install_dlls dll_dir target)
   add_custom_command(TARGET ${target} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${DLL_WIN64_DIR}"
+        ${dll_dir}
         $<TARGET_FILE_DIR:${target}>)
 endmacro (install_dlls)
 

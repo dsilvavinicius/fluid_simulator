@@ -3,7 +3,7 @@
 
 namespace infrastructure {
 
-	static const string& ENTRY_POINT_NAME = "main";
+	const string& Program::ENTRY_POINT_NAME = "main";
 
 	CGcontext& Program::getContext() {
 		static CGcontext cgContext = cgCreateContext();
