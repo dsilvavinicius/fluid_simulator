@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void main(int argc, char** argv) {
+int main(int argc, char** argv) {
 	try {
 		infrastructure::Application& application = infrastructure::Application::getInstance();
 		application.createMainWindow(&argc, argv);
