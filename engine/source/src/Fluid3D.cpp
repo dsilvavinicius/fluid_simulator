@@ -1,7 +1,7 @@
-#include "Fluid2D.h"
+#include "Fluid3D.h"
 
-namespace fluid {
-	Fluid2D::Fluid2D(int gridWidth, int gridHeight) {
+namespace engine {
+	Fluid3D::Fluid3D(int gridWidth, int gridHeight) {
 
 	}
 
@@ -9,7 +9,7 @@ namespace fluid {
 	 * A quad is rendered to update the internal cells and 4 lines are rendered to update the borders cells and apply
 	 * boundary conditions.
 	 */
-	void Fluid2D::update() {
+	void Fluid3D::update() {
 
 	}
 }

@@ -11,7 +11,8 @@ set (CPP_DIR ${CPP_DIR} "source/src")
 add_library (Fluid_Engine
 	${ENGINE_HEADER_DIR}/Application.h	${CPP_DIR}/Application.cpp
 	${ENGINE_HEADER_DIR}/Program.h		${CPP_DIR}/Program.cpp
-	${ENGINE_HEADER_DIR}/Fluid2D.h		${CPP_DIR}/Fluid2D.cpp)
+	${ENGINE_HEADER_DIR}/Fluid3D.h		${CPP_DIR}/Fluid3D.cpp
+	${ENGINE_HEADER_DIR}/Boundary.h		${CPP_DIR}/Boundary.cpp)
 	
 # Add libraries.
 # TODO: set options for platform and build type.

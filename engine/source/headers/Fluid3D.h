@@ -1,15 +1,17 @@
 #ifndef FLUID_2D_H
 #define FLUID_2D_H
 
+#include <glm/glm.hpp>
+
 /**
- * 2D fluid class. The implementation follows the guidelines here:
- * http://http.developer.nvidia.com/GPUGems/gpugems_ch38.html. 
+ * 3D fluid class. The implementation follows the guidelines here:
+ * http://http.developer.nvidia.com/GPUGems3/gpugems3_ch30.html. 
  */
-namespace fluid{
-	class Fluid2D {
+namespace engine{
+	class Fluid3D {
 	public:
-		Fluid2D(int gridWidth, int gridHeight);
-		~Fluid2D();
+		Fluid3D(int gridWidth, int gridHeight);
+		~Fluid3D();
 
 		/**
 		 * Updates the fluid state. A quad is rendered to update the internal cells and 4 lines are rendered to
