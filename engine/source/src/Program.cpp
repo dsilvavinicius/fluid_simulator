@@ -1,5 +1,6 @@
 #include <fstream>
 #include "Program.h"
+#include <GL/glew.h>
 
 namespace infrastructure {
 
@@ -23,6 +24,9 @@ namespace infrastructure {
 		}
 		
 		cgProgram = cgCreateProgram(getContext(), CG_SOURCE, sourceCode.c_str(), profile, ENTRY_POINT_NAME.c_str(), NULL);
+
+		// Creating framebuffer.
+		glGenFramebuffers();
 	}
 
 

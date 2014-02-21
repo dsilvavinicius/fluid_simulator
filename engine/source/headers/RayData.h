@@ -1,18 +1,20 @@
-#ifndef BOUNDARY_H
-#define BOUNDARY_H
+#ifndef RAY_DATA_H
+#define RAY_DATA_H
 
 #include <glm/glm.hpp>
 #include <memory>
+#include "Program.h"
 
 using namespace std;
+using namespace infrastructure;
 
 /**
  * One of the quad boundaries of the fluid. Used in the fluid rendering, to raycast into the Fluid3D.
  */
 namespace engine{
-	class Boundary {
+	class RayData {
 	public:
-		Boundary(const glm::vec2& size, const glm::mat4x4 transform);
+		RayData(const glm::vec2& size);
 		
 		/**
 		 * Renders the fluid quad is rendered with the internal grid program to evaluate cells and 4 lines
@@ -21,7 +23,12 @@ namespace engine{
 		void render();
 	private:
 		shared_ptr<glm::vec2> size;
-		shared_ptr<glm::mat4x4> transform;
+		
+		/**
+		 * Calculates the texture with the entry point and travelled depth in the volume for each fragment's
+		 * associated ray.
+		 */
+		shared_ptr<Program> calcRayData;
 	};
 }
 #endif

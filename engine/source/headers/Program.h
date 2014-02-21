@@ -9,7 +9,7 @@
 using namespace std;
 
 /**
- * Shader Program class.
+ * Shader Program class for post-processing effects. 
  */
 namespace infrastructure {
 	class Program
@@ -21,6 +21,9 @@ namespace infrastructure {
 	private:
 		static const string& ENTRY_POINT_NAME;
 		CGprogram cgProgram;
+		/** Framebuffer generated after program execution. */
+		GLuint frameBufferId;
+		GLuint renderBufferId;
 	};
 }
 

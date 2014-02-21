@@ -12,7 +12,8 @@ add_library (Fluid_Engine
 	${ENGINE_HEADER_DIR}/Application.h	${CPP_DIR}/Application.cpp
 	${ENGINE_HEADER_DIR}/Program.h		${CPP_DIR}/Program.cpp
 	${ENGINE_HEADER_DIR}/Fluid3D.h		${CPP_DIR}/Fluid3D.cpp
-	${ENGINE_HEADER_DIR}/Boundary.h		${CPP_DIR}/Boundary.cpp)
+	${ENGINE_HEADER_DIR}/Boundary.h		${CPP_DIR}/Boundary.cpp
+	${ENGINE_HEADER_DIR}/RayData.h		${CPP_DIR}/RayData.cpp)
 	
 # Add libraries.
 # TODO: set options for platform and build type.
@@ -20,6 +21,7 @@ set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/engine/libraries/li
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/freeglut.lib")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/cg.lib")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/cgGL.lib")
+set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/glew32.lib")
 
 cmake_policy(SET CMP0015 NEW) # Use new policy in link_directories(): output absolute paths.
 target_link_libraries (Fluid_Engine ${LIBS_DIR})
