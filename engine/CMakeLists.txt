@@ -13,7 +13,8 @@ add_library (Fluid_Engine
 	${ENGINE_HEADER_DIR}/Program.h		${CPP_DIR}/Program.cpp
 	${ENGINE_HEADER_DIR}/Fluid3D.h		${CPP_DIR}/Fluid3D.cpp
 	${ENGINE_HEADER_DIR}/Boundary.h		${CPP_DIR}/Boundary.cpp
-	${ENGINE_HEADER_DIR}/RayData.h		${CPP_DIR}/RayData.cpp)
+	${ENGINE_HEADER_DIR}/RayData.h		${CPP_DIR}/RayData.cpp
+	${ENGINE_HEADER_DIR}/Utils.h		${CPP_DIR}/Utils.cpp)
 	
 # Add libraries.
 # TODO: set options for platform and build type.

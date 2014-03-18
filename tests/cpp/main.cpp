@@ -1,9 +1,11 @@
 #include <gtest/gtest.h>
 #include "Program.h"
 
+using namespace infrastructure;
+
 TEST(ProgramTest, Creation) {
 	EXPECT_THROW(
-		infrastructure::Program program("fileName", CGprofile::CG_PROFILE_ARBFP1),
+		Program program("fileName", "fileName"),
 		runtime_error
 	);
 }

@@ -1,36 +1,81 @@
 #include <fstream>
-#include "Program.h"
 #include <GL/glew.h>
+#include "Program.h"
+#include "Utils.h"
+
+using namespace utils;
 
 namespace infrastructure {
-
-	const string& Program::ENTRY_POINT_NAME = "main";
-
-	CGcontext& Program::getContext() {
-		static CGcontext cgContext = cgCreateContext();
-		return cgContext;
-	}
 	
-	Program::Program(const string& sourceFileName, const CGprofile& profile) {
-		ifstream inputStream(sourceFileName, ios::in);
-		if (!inputStream) {
-			throw runtime_error("Could not find file: " + sourceFileName);
-		}
-		
-		string sourceCode;
-		char fileChar;
-		while (inputStream.get(fileChar)) {
-			sourceCode.append(&fileChar, 1);
-		}
-		
-		cgProgram = cgCreateProgram(getContext(), CG_SOURCE, sourceCode.c_str(), profile, ENTRY_POINT_NAME.c_str(), NULL);
+	const int Program::LOG_SIZE = 5000;
+	
+	/**
+	 * Creates and compiles the post-processing program shaders.
+	 */
+	Program::Program(const string& vertFileName, const string& fragFileName) {
+		m_vert = createShader(vertFileName, GL_VERTEX_SHADER);
+		m_frag = createShader(fragFileName, GL_FRAGMENT_SHADER);
 
+		m_program = glCreateProgram();
+		glAttachShader(m_program, m_vert);
+		glAttachShader(m_program, m_frag);
+
+		// Linking.
+		glLinkProgram(m_program);
+
+		GLint linkFlag;
+		glGetProgramiv(m_program, GL_LINK_STATUS, &linkFlag);
+		
+		if (linkFlag != GL_TRUE) {
+			char log[LOG_SIZE];
+			glGetProgramInfoLog(m_program, LOG_SIZE, NULL, log);
+
+			throw new runtime_error(log);
+		}
+		
 		// Creating framebuffer.
-		glGenFramebuffers();
+		//glGenFramebuffers();
 	}
 
 
 	Program::~Program(){
+		glDeleteShader(m_vert);
+		glDeleteShader(m_frag);
+		glDeleteProgram(m_program);
+	}
 
+	/**
+	 * Creates a shader given the source file name and type.
+	 */
+	GLint Program::createShader(const string& fileName, const GLenum type) {
+		const char* source[1] = { Utils::loadFile(fileName).c_str() };
+		
+		GLint shader = glCreateShader(type);
+
+		if (shader == 0) {
+			throw new runtime_error("Vertex shader creation has reported error.");
+		}
+
+		glShaderSource(shader, 1, source, NULL);
+
+		compileShader(shader);
+
+		return shader;
+	}
+
+	/**
+	 * Compiles a shader.
+	 */
+	void Program::compileShader(GLuint shader) {
+		glCompileShader(shader);
+		GLint compilationFlag;
+		glGetShaderiv(shader, GL_COMPILE_STATUS, &compilationFlag);
+
+		if (compilationFlag != GL_TRUE) {
+			char log[Program::LOG_SIZE];
+			glGetShaderInfoLog(shader, LOG_SIZE, NULL, log);
+
+			throw new runtime_error(log);
+		}
 	}
 }
