@@ -20,6 +20,8 @@ namespace infrastructure {
 
 		/** Subclasses should provide shader uniform initialization here. */
 		virtual void initUniforms() = 0;
+		/** Subclasses should provide render buffer initialization here. */
+		virtual void initRenderBuffers() = 0;
 
 	private:
 		/** Shader identifiers. */

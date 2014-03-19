@@ -1,4 +1,5 @@
 #include <fstream>
+#include <GL/glew.h>
 #include "Utils.h"
 
 namespace utils {
@@ -17,5 +18,12 @@ namespace utils {
 		}
 
 		return contents;
+	}
+
+	void Utils::checkGLError() {
+		GLenum error = glGetError();
+		if (error != GL_NO_ERROR) {
+			throw new runtime_error("Error in OpenGL: " + error);
+		}
 	}
 }

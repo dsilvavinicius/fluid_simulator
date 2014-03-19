@@ -1,0 +1,1 @@
+* To check for back faces of the simulation volume, use gl_FrontFacing inside the fragment shader.

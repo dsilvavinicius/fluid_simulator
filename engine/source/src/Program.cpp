@@ -33,8 +33,11 @@ namespace infrastructure {
 			throw new runtime_error(log);
 		}
 		
-		// Creating framebuffer.
-		//glGenFramebuffers();
+		// Creating framebuffer and renderbuffer.
+		glGenFramebuffers(1, &m_frameBufferId);
+		glBindFramebuffer(GL_DRAW_BUFFER, m_frameBufferId);
+
+		Utils::checkGLError();
 	}
 
 
@@ -42,6 +45,9 @@ namespace infrastructure {
 		glDeleteShader(m_vert);
 		glDeleteShader(m_frag);
 		glDeleteProgram(m_program);
+		glDeleteFramebuffers(1, &m_frameBufferId);
+
+		Utils::checkGLError();
 	}
 
 	/**

@@ -14,6 +14,7 @@ namespace utils {
 		Utils();
 	public:
 		static string loadFile(const string& fileName);
+		static void checkGLError();
 	};
 }
 #endif
