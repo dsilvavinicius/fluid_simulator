@@ -10,7 +10,7 @@ using namespace std;
 /**
  * Shader Program class for post-processing effects. Each Program has a vertex and fragment shader. 
  */
-namespace infrastructure {
+namespace engine {
 	
 	class Program
 	{

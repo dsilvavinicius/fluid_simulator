@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "Program.h"
 
-using namespace infrastructure;
+using namespace engine;
 
 TEST(ProgramTest, Creation) {
 	EXPECT_THROW(
