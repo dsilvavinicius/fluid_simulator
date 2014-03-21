@@ -1,3 +1,8 @@
+##############################
+# Tests build description.
+# Path: tests/
+##############################
+
 # Set include dirs.
 set (TEST_INCLUDE_DIR ${TEST_INCLUDE_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/include")
 

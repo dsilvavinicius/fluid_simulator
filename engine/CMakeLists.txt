@@ -1,3 +1,8 @@
+##############################
+# Engine build description.
+# Path: engine/
+##############################
+
 # Set include dirs.
 include_directories (${ENGINE_INCLUDE_DIR})
 
@@ -6,6 +11,7 @@ cmake_policy(SET CMP0015 NEW)
 
 # Set source directories.
 set (CPP_DIR ${CPP_DIR} "source/src")
+set (SHADER_DIR ${SHADER_DIR} "${CPP_DIR}/shaders")
 
 # Add the executable
 add_library (Fluid_Engine
@@ -15,7 +21,9 @@ add_library (Fluid_Engine
 	${ENGINE_HEADER_DIR}/Boundary.h			${CPP_DIR}/Boundary.cpp
 	${ENGINE_HEADER_DIR}/RayData.h			${CPP_DIR}/RayData.cpp
 	${ENGINE_HEADER_DIR}/RayDataBackPass.h	${CPP_DIR}/RayDataBackPass.cpp
-	${ENGINE_HEADER_DIR}/Utils.h			${CPP_DIR}/Utils.cpp)
+	${ENGINE_HEADER_DIR}/Utils.h			${CPP_DIR}/Utils.cpp
+	# Shaders
+	${SHADER_DIR}/RayDataBackPass.vert		${SHADER_DIR}/RayDataBackPass.frag)
 	
 # Add libraries.
 # TODO: set options for platform and build type.

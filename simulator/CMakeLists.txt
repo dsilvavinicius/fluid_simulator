@@ -1,3 +1,8 @@
+##############################
+# Simulator build description.
+# Path: simulator/
+##############################
+
 # Set include dirs.
 include_directories (${ENGINE_INCLUDE_DIR})
 
