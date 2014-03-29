@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
-#include "Program.h"
+#include "RayDataBackPass.h"
+#include "Utils.h"
 
 using namespace engine;
+using namespace utils;
 
-TEST(ProgramTest, Creation) {
-	EXPECT_THROW(
-		Program program("fileName", "fileName"),
-		runtime_error
-	);
+TEST(RayDataBackPassTest, Creation) {
+	ASSERT_NO_THROW(RayDataBackPass program());
+	ASSERT_NO_THROW(Utils::checkGLError());
 }
 
 int main(int argc, char** argv) {

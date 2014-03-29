@@ -6,7 +6,6 @@
 #include "Program.h"
 
 using namespace std;
-using namespace infrastructure;
 
 /**
  * One of the quad boundaries of the fluid. Used in the fluid rendering, to raycast into the Fluid3D.

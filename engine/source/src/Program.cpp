@@ -38,6 +38,9 @@ namespace engine {
 		glBindFramebuffer(GL_DRAW_BUFFER, m_frameBufferId);
 
 		Utils::checkGLError();
+
+		initUniforms();
+		initRenderBuffers();
 	}
 
 

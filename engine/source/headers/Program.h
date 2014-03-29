@@ -22,13 +22,13 @@ namespace engine {
 		virtual void initUniforms() = 0;
 		/** Subclasses should provide render buffer initialization here. */
 		virtual void initRenderBuffers() = 0;
-
+	protected:
+		/** Final OpenGL shader program identifier. */
+		GLuint m_program;
 	private:
 		/** Shader identifiers. */
 		GLuint m_vert;
 		GLuint m_frag;
-		/** Final OpenGL shader program identifier. */
-		GLuint m_program;
 		
 		/** Framebuffer generated after program execution. */
 		GLuint m_frameBufferId;

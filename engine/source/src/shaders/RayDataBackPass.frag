@@ -1,6 +1,9 @@
 #version 330 core
-void
-main()
-{
-// Your code goes here
+
+uniform vec4 cameraPos;
+out vec4 camToPixelDistance;
+in vec4 viewSpacePos;
+
+void main() {	
+	camToPixelDistance.a = (0.f, 0.f, 0.f, distance(viewSpacePos, camPos));
 }

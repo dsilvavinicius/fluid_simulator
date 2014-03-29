@@ -6,9 +6,6 @@
 # Set include dirs.
 include_directories (${ENGINE_INCLUDE_DIR})
 
-# Use new policy in link_directories(): output absolute paths.
-cmake_policy(SET CMP0015 NEW)
-
 # Set source directories.
 set (CPP_DIR ${CPP_DIR} "source/src")
 set (SHADER_DIR ${SHADER_DIR} "${CPP_DIR}/shaders")
@@ -29,8 +26,6 @@ add_library (Fluid_Engine
 # TODO: set options for platform and build type.
 set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/engine/libraries/lib/Win64")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/freeglut.lib")
-set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/cg.lib")
-set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/cgGL.lib")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/glew32.lib")
 
 cmake_policy(SET CMP0015 NEW) # Use new policy in link_directories(): output absolute paths.

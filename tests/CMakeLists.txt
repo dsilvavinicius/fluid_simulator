@@ -18,6 +18,7 @@ add_executable (Tests
 
 set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/Win64")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")
+
 target_link_libraries (Tests ${LIBS_DIR})
 target_link_libraries (Tests Fluid_Engine)
 
