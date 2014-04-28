@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 #include "RayDataBackPass.h"
-#include "Utils.h"
+#include "OGL.h"
 
 using namespace engine;
-using namespace utils;
+using namespace ogl;
 
 TEST(RayDataBackPassTest, Creation) {
 	ASSERT_NO_THROW(RayDataBackPass program());
-	ASSERT_NO_THROW(Utils::checkGLError());
+	ASSERT_NO_THROW(OGL::checkError());
 }
 
 int main(int argc, char** argv) {

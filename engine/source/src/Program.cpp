@@ -2,8 +2,10 @@
 #include <GL/glew.h>
 #include "Program.h"
 #include "Utils.h"
+#include "OGL.h"
 
 using namespace utils;
+using namespace ogl;
 
 namespace engine {
 	
@@ -37,10 +39,13 @@ namespace engine {
 		glGenFramebuffers(1, &m_frameBufferId);
 		glBindFramebuffer(GL_DRAW_BUFFER, m_frameBufferId);
 
-		Utils::checkGLError();
-
 		initUniforms();
-		initRenderBuffers();
+		DisplaySettingsPtr display = DisplaySettingsPtr(
+			new DisplaySettings(DisplaySettings::DEFAULT_WIDTH, DisplaySettings::DEFAULT_HEIGHT)
+		);
+		initFrameBuffer(display);
+
+		OGL::checkError();
 	}
 
 
@@ -50,7 +55,7 @@ namespace engine {
 		glDeleteProgram(m_program);
 		glDeleteFramebuffers(1, &m_frameBufferId);
 
-		Utils::checkGLError();
+		OGL::checkError();
 	}
 
 	/**

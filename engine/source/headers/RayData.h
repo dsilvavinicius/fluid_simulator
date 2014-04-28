@@ -27,7 +27,7 @@ namespace engine{
 		 * Calculates the texture with the entry point and travelled depth in the volume for each fragment's
 		 * associated ray.
 		 */
-		shared_ptr<Program> calcRayData;
+		ProgramPtr calcRayData;
 	};
 }
 #endif

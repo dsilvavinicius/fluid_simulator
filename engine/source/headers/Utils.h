@@ -5,16 +5,15 @@
 
 using namespace std;
 
-/**
- * Generic utilities.
- */
-namespace utils {
+namespace utils {	
+	/**
+	* Generic utilities.
+	*/
 	class Utils {
 	private:
 		Utils();
 	public:
 		static string loadFile(const string& fileName);
-		static void checkGLError();
 	};
 }
 #endif

@@ -19,6 +19,9 @@ add_library (Fluid_Engine
 	${ENGINE_HEADER_DIR}/RayData.h			${CPP_DIR}/RayData.cpp
 	${ENGINE_HEADER_DIR}/RayDataBackPass.h	${CPP_DIR}/RayDataBackPass.cpp
 	${ENGINE_HEADER_DIR}/Utils.h			${CPP_DIR}/Utils.cpp
+	${ENGINE_HEADER_DIR}/OGL.h				${CPP_DIR}/OGL.cpp
+	${ENGINE_HEADER_DIR}/Buffer.h			${CPP_DIR}/Buffer.cpp
+	${ENGINE_HEADER_DIR}/DisplaySettings.h	${CPP_DIR}/DisplaySettings.cpp
 	# Shaders
 	${SHADER_DIR}/RayDataBackPass.vert		${SHADER_DIR}/RayDataBackPass.frag)
 	
