@@ -19,18 +19,9 @@ namespace engine {
 	public:
 		Program(const string& vertFileName, const string& fragFileName);
 		~Program();
-
-		/** Subclasses should provide shader uniform initialization here. */
-		virtual void initUniforms() = 0;
-		/** Subclasses should provide render buffer initialization here. */
-		virtual void initFrameBuffer(DisplaySettingsPtr& display) = 0;
 	protected:
 		/** Final OpenGL shader program identifier. */
 		GLuint m_program;
-
-		/** Framebuffer generated after program execution. */
-		GLuint m_frameBufferId;
-		GLuint m_renderBufferId;
 	private:
 		/** Shader identifiers. */
 		GLuint m_vert;

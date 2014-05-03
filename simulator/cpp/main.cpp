@@ -11,6 +11,9 @@ int main(int argc, char** argv) {
 		application.createMainWindow(&argc, argv);
 		application.enterSimulationLoop();
 	}
+	catch (const logic_error& e) {
+		cerr << "Logic error: " << e.what() << endl;
+	}
 	catch (const runtime_error& e) {
 		cerr << "Runtime error: " << e.what() << endl;
 	}

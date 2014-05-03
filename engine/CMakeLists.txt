@@ -33,6 +33,8 @@ set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/glew32.lib")
 
 cmake_policy(SET CMP0015 NEW) # Use new policy in link_directories(): output absolute paths.
 target_link_libraries (Fluid_Engine ${LIBS_DIR})
+# OpenGL32.lib is assumed to be bundled with Windows.
+target_link_libraries (Fluid_Engine "OpenGL32.lib")
 		
 # Install target.
 install (TARGETS Fluid_Engine DESTINATION ${PROJECT_BINARY_DIR}/engine)

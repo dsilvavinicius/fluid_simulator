@@ -13,6 +13,21 @@ namespace engine {
 	RayDataBackPass::RayDataBackPass(mat4 modelView, mat4 projection, vec3 camPos)
 	: Program(m_vertShaderFileName, m_fragShaderFileName) {
 		
+		// Creating framebuffer and renderbuffer.
+		glGenFramebuffers(1, &m_frameBufferId);
+		glBindFramebuffer(GL_DRAW_BUFFER, m_frameBufferId);
+
+		initUniforms();
+		DisplaySettingsPtr display = DisplaySettingsPtr(
+			new DisplaySettings(DisplaySettings::DEFAULT_WIDTH, DisplaySettings::DEFAULT_HEIGHT)
+			);
+		initFrameBuffer(display);
+
+		OGL::checkError();
+	}
+
+	RayDataBackPass::~RayDataBackPass() {
+		glDeleteFramebuffers(1, &m_frameBufferId);
 	}
 
 	void RayDataBackPass::initUniforms() {

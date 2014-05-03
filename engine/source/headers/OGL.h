@@ -1,10 +1,6 @@
 #ifndef OGL_H
 #define OGL_H
 
-#include <string>
-
-using namespace std;
-
 namespace ogl {
 	class OGL {
 	private:

@@ -6,7 +6,7 @@ using namespace engine;
 using namespace ogl;
 
 TEST(RayDataBackPassTest, Creation) {
-	ASSERT_NO_THROW(RayDataBackPass program());
+	ASSERT_NO_THROW(RayDataBackPass(mat4(1.f), mat4(1.f), vec3(0.f)));
 	ASSERT_NO_THROW(OGL::checkError());
 }
 

@@ -1,6 +1,8 @@
-#include <fstream>
+#include <stdexcept>
 #include <GL/glew.h>
 #include "OGL.h"
+
+using namespace std;
 
 namespace ogl {
 	OGL::OGL() {}

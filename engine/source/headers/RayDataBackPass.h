@@ -16,6 +16,11 @@ namespace engine {
 	private:
 		static const char *m_vertShaderFileName;
 		static const char *m_fragShaderFileName;
+		
+		/** Framebuffer generated after program execution. */
+		GLuint m_frameBufferId;
+		/** Renderbuffer attached to m_frameBufferId. */
+		GLuint m_renderBufferId;
 	protected:
 		void initUniforms();
 		void initFrameBuffer(DisplaySettingsPtr& display);
@@ -23,6 +28,7 @@ namespace engine {
 		void clearRenderBuffers();
 	public:
 		RayDataBackPass(mat4 modelView, mat4 Projection, vec3 camPos);
+		~RayDataBackPass();
 	};
 }
 #endif
