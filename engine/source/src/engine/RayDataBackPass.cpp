@@ -1,14 +1,14 @@
-#include "RayDataBackPass.h"
-#include "DisplaySettings.h"
-#include "OGL.h"
+#include "engine/RayDataBackPass.h"
+#include "engine/DisplaySettings.h"
+#include "infrastructure/OGL.h"
 
 using namespace glm;
 using namespace ogl;
 
 namespace engine {
 	
-	const char* RayDataBackPass::m_vertShaderFileName = "../engine/source/src/shaders/RayDataBackPass.vert";
-	const char* RayDataBackPass::m_fragShaderFileName = "../engine/source/src/shaders/RayDataBackPass.frag";
+	const char* RayDataBackPass::m_vertShaderFileName = "../../engine/source/src/shaders/RayDataBackPass.vert";
+	const char* RayDataBackPass::m_fragShaderFileName = "../../engine/source/src/shaders/RayDataBackPass.frag";
 
 	RayDataBackPass::RayDataBackPass(mat4 modelView, mat4 projection, vec3 camPos)
 	: Program(m_vertShaderFileName, m_fragShaderFileName) {

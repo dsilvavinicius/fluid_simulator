@@ -1,8 +1,8 @@
 #include <fstream>
 #include <GL/glew.h>
-#include "Program.h"
-#include "Utils.h"
-#include "OGL.h"
+#include "engine/Program.h"
+#include "infrastructure/Utils.h"
+#include "infrastructure/OGL.h"
 
 using namespace utils;
 using namespace ogl;

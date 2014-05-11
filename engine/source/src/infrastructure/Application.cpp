@@ -7,14 +7,10 @@ namespace infrastructure {
 		return app;
 	}
 
-	Application::Application() {
-
-	}
+	Application::Application() {}
 
 
-	Application::~Application() {
-
-	}
+	Application::~Application() {}
 
 	void Application::createMainWindow(int* argc, char** argv) {
 		/* Glut-related initialising functions */

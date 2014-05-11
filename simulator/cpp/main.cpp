@@ -1,13 +1,14 @@
 #include <iostream>
 #include <memory>
 #include <exception>
-#include "Application.h"
+#include "infrastructure/Application.h"
 
 using namespace std;
+using namespace infrastructure;
 
 int main(int argc, char** argv) {
 	try {
-		infrastructure::Application& application = infrastructure::Application::getInstance();
+		Application& application = Application::getInstance();
 		application.createMainWindow(&argc, argv);
 		application.enterSimulationLoop();
 	}

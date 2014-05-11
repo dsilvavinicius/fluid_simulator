@@ -10,20 +10,40 @@ include_directories (${ENGINE_INCLUDE_DIR})
 set (CPP_DIR ${CPP_DIR} "source/src")
 set (SHADER_DIR ${SHADER_DIR} "${CPP_DIR}/shaders")
 
-# Add the executable
+# Specifying sources.
+file (GLOB_RECURSE ENGINE_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/source/headers/engine/*.h
+	${CMAKE_CURRENT_SOURCE_DIR}/source/src/engine/*.cpp)
+file (GLOB_RECURSE INFRASTRUCTURE_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/source/headers/infrastructure/*.h
+	${CMAKE_CURRENT_SOURCE_DIR}/source/headers/infrastructure/*.cpp)
+file (GLOB_RECURSE SHADERS_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/source/src/shaders/*.vert
+	${CMAKE_CURRENT_SOURCE_DIR}/source/src/shaders/*.frag
+)
+
+# Creating source groups.
+source_group (engine FILES ${ENGINE_SRCS})
+source_group (infrastructure FILES ${INFRASTRUCTURE_SRCS})
+source_group (shaders FILES ${SHADERS_SRCS})
+
+# Creating the library.
 add_library (Fluid_Engine
-	${ENGINE_HEADER_DIR}/Application.h		${CPP_DIR}/Application.cpp
-	${ENGINE_HEADER_DIR}/Program.h			${CPP_DIR}/Program.cpp
-	${ENGINE_HEADER_DIR}/Fluid3D.h			${CPP_DIR}/Fluid3D.cpp
-	${ENGINE_HEADER_DIR}/Boundary.h			${CPP_DIR}/Boundary.cpp
-	${ENGINE_HEADER_DIR}/RayData.h			${CPP_DIR}/RayData.cpp
-	${ENGINE_HEADER_DIR}/RayDataBackPass.h	${CPP_DIR}/RayDataBackPass.cpp
-	${ENGINE_HEADER_DIR}/Utils.h			${CPP_DIR}/Utils.cpp
-	${ENGINE_HEADER_DIR}/OGL.h				${CPP_DIR}/OGL.cpp
-	${ENGINE_HEADER_DIR}/Buffer.h			${CPP_DIR}/Buffer.cpp
-	${ENGINE_HEADER_DIR}/DisplaySettings.h	${CPP_DIR}/DisplaySettings.cpp
-	# Shaders
-	${SHADER_DIR}/RayDataBackPass.vert		${SHADER_DIR}/RayDataBackPass.frag)
+${ENGINE_SRCS}
+${INFRASTRUCTURE_SRCS}
+${SHADERS_SRCS})
+
+# Creating the library.
+#add_library (Fluid_Engine
+#	${ENGINE_HEADER_DIR}/Application.h		${CPP_DIR}/Application.cpp
+#	${ENGINE_HEADER_DIR}/Program.h			${CPP_DIR}/Program.cpp
+#	${ENGINE_HEADER_DIR}/Fluid3D.h			${CPP_DIR}/Fluid3D.cpp
+#	${ENGINE_HEADER_DIR}/Boundary.h			${CPP_DIR}/Boundary.cpp
+#	${ENGINE_HEADER_DIR}/RayData.h			${CPP_DIR}/RayData.cpp
+#	${ENGINE_HEADER_DIR}/RayDataBackPass.h	${CPP_DIR}/RayDataBackPass.cpp
+#	${ENGINE_HEADER_DIR}/Utils.h			${CPP_DIR}/Utils.cpp
+#	${ENGINE_HEADER_DIR}/OGL.h				${CPP_DIR}/OGL.cpp
+#	${ENGINE_HEADER_DIR}/Buffer.h			${CPP_DIR}/Buffer.cpp
+#	${ENGINE_HEADER_DIR}/DisplaySettings.h	${CPP_DIR}/DisplaySettings.cpp
+#	# Shaders
+#	${SHADER_DIR}/RayDataBackPass.vert		${SHADER_DIR}/RayDataBackPass.frag)
 	
 # Add libraries.
 # TODO: set options for platform and build type.

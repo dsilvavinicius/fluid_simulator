@@ -1,12 +1,28 @@
 #include <gtest/gtest.h>
-#include "RayDataBackPass.h"
-#include "OGL.h"
+#include "engine/RayDataBackPass.h"
+#include "infrastructure/OGL.h"
+#include "infrastructure/Application.h"
 
 using namespace engine;
 using namespace ogl;
+using namespace infrastructure;
+
+struct CommandLineArgs {
+	int argc;
+	char** argv;
+
+	CommandLineArgs(int argc, char** argv) {
+		this->argc = argc;
+		this->argv = argv;
+	}
+} ;
 
 TEST(RayDataBackPassTest, Creation) {
-	ASSERT_NO_THROW(RayDataBackPass(mat4(1.f), mat4(1.f), vec3(0.f)));
+	ASSERT_NO_THROW( {
+		Application& app = Application::getInstance();
+		app.createMainWindow(NULL, NULL);
+		RayDataBackPass(mat4(1.f), mat4(1.f), vec3(0.f));
+	} );
 	ASSERT_NO_THROW(OGL::checkError());
 }
 

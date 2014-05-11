@@ -1,4 +1,4 @@
-#include "DisplaySettings.h"
+#include "engine/DisplaySettings.h"
 
 namespace engine {
 	DisplaySettings::DisplaySettings(int resHeight, int resWidth) {
