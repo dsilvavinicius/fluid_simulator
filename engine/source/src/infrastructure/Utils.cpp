@@ -1,6 +1,6 @@
 #include <fstream>
 #include <GL/glew.h>
-#include "Utils.h"
+#include "infrastructure/Utils.h"
 
 namespace utils {
 	Utils::Utils() {}

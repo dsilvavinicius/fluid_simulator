@@ -1,4 +1,4 @@
-#include "Buffer.h"
+#include "infrastructure/Buffer.h"
 
 namespace ogl {
 	Buffer::Buffer() {}
