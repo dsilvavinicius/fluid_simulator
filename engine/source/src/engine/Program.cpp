@@ -32,7 +32,7 @@ namespace engine {
 			char log[LOG_SIZE];
 			glGetProgramInfoLog(m_program, LOG_SIZE, NULL, log);
 
-			throw new runtime_error(log);
+			throw logic_error(log);
 		}
 
 		OGL::checkError();
@@ -51,15 +51,18 @@ namespace engine {
 	 * Creates a shader given the source file name and type.
 	 */
 	GLint Program::createShader(const string& fileName, const GLenum type) {
-		const char* source[1] = { Utils::loadFile(fileName).c_str() };
+		string source = Utils::loadFile(fileName);
+		
+		const GLchar* sourceC = source.c_str();
+		const GLint lenght = (GLint) source.length();
 		
 		GLint shader = glCreateShader(type);
 
 		if (shader == 0) {
-			throw new runtime_error("Vertex shader creation has reported error.");
+			throw runtime_error("Vertex shader creation has reported error.");
 		}
 
-		glShaderSource(shader, 1, source, NULL);
+		glShaderSource(shader, 1, &sourceC, &lenght);
 
 		compileShader(shader);
 
@@ -78,7 +81,7 @@ namespace engine {
 			char log[Program::LOG_SIZE];
 			glGetShaderInfoLog(shader, LOG_SIZE, NULL, log);
 
-			throw new runtime_error(log);
+			throw logic_error(log);
 		}
 	}
 }

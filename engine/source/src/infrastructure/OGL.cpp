@@ -10,7 +10,7 @@ namespace ogl {
 	void OGL::checkError() {
 		GLenum error = glGetError();
 		if (error != GL_NO_ERROR) {
-			throw new logic_error("Error in OpenGL: " + error);
+			throw logic_error("Error in OpenGL: " + error);
 		}
 	}
 }

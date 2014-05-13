@@ -3,7 +3,7 @@
 uniform Matrices {
 	mat4 modelView;
 	mat4 projection;
-}
+};
 
 in vec4 vertex;
 

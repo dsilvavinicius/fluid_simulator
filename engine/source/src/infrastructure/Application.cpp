@@ -1,3 +1,5 @@
+#include <stdexcept>
+#include <gl/glew.h>
 #include "infrastructure/Application.h"
 
 namespace infrastructure {
@@ -12,12 +14,17 @@ namespace infrastructure {
 
 	Application::~Application() {}
 
-	void Application::createMainWindow(int* argc, char** argv) {
-		/* Glut-related initialising functions */
-		glutInit(argc, argv);
+	void Application::createMainWindow() {
+		// Dummy argc and argv;
+		int argc = 1;
+		char* argv = { "" };
+		glutInit(&argc, &argv);
 		glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 		glutInitWindowSize(640, 480);
 		glutCreateWindow("My First Triangle");
+		if (glewInit() != GLEW_OK) {
+			throw runtime_error("GLEW cannot be initialized.");
+		}
 	}
 
 	void Application::enterSimulationLoop() {

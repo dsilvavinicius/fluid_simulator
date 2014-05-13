@@ -1,6 +1,6 @@
 #version 330 core
 
-uniform vec4 cameraPos;
+uniform vec4 camPos;
 out vec4 camToPixelDistance;
 in vec4 viewSpacePos;
 

@@ -15,7 +15,7 @@ namespace infrastructure {
 	public:
 		static Application& getInstance();
 		~Application();
-		void createMainWindow(int* argc, char** argv);
+		void createMainWindow();
 		void enterSimulationLoop();
 	
 	private:
