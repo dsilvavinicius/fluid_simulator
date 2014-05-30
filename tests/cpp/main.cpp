@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "engine/RayDataBackPass.h"
-#include "infrastructure/OGL.h"
+#include "ogl/OGL.h"
 #include "infrastructure/Application.h"
 
 using namespace engine;

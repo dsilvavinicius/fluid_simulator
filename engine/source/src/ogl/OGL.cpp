@@ -1,6 +1,6 @@
 #include <stdexcept>
 #include <GL/glew.h>
-#include "infrastructure/OGL.h"
+#include "ogl/OGL.h"
 
 using namespace std;
 

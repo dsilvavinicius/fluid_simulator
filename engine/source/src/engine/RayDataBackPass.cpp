@@ -1,6 +1,7 @@
 #include "engine/RayDataBackPass.h"
 #include "engine/DisplaySettings.h"
-#include "infrastructure/OGL.h"
+#include "ogl/OGL.h"
+#include "ogl/Buffer.h"
 
 using namespace glm;
 using namespace ogl;
@@ -35,9 +36,22 @@ namespace engine {
 		if (uboIndex == GL_INVALID_INDEX) {
 			throw logic_error("Invalid uniform block name: " + blockName);
 		}
+		
+		/*GLsizeiptr uboSize;
+		glGetActiveUniformBlockiv(m_program, uboIndex, GL_UNIFORM_BLOCK_DATA_SIZE, uboSize);
 
-		GLint uboSize;
-		glGetActiveUniformBlockiv(m_program, uboIndex, GL_UNIFORM_BLOCK_DATA_SIZE, &uboSize);
+		Buffer buffer = Buffer(GL_UNIFORM_BUFFER, uboSize, buffer, GL_STATIC_DRAW);
+
+		GLuint ubo;
+		GLvoid *buffer;
+		
+		buffer = malloc(uboSize);
+
+		if (buffer == NULL) {
+			throw logic_error("Unable to allocate buffer\n");
+		}*/
+
+		
 		//glBindBufferBase(GL_UNIFORM_BUFFER, uboIndex, );
 
 

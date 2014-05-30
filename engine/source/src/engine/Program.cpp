@@ -2,7 +2,7 @@
 #include <GL/glew.h>
 #include "engine/Program.h"
 #include "infrastructure/Utils.h"
-#include "infrastructure/OGL.h"
+#include "ogl/OGL.h"
 
 using namespace utils;
 using namespace ogl;
