@@ -13,7 +13,7 @@ namespace engine {
 
 	RayDataBackPass::RayDataBackPass(mat4 modelView, mat4 projection, vec3 camPos)
 	: Program(m_vertShaderFileName, m_fragShaderFileName) {
-		glUseProgram(m_program);
+		glUseProgram(m_index);
 
 		initUniforms();
 		DisplaySettingsPtr display = DisplaySettingsPtr(
@@ -31,14 +31,14 @@ namespace engine {
 	void RayDataBackPass::initUniforms() {
 		// Init "Matrices" block in vertex shader.
 		string blockName = "Matrices";
-		GLint uboIndex = glGetUniformBlockIndex(m_program, blockName.c_str());
+		GLint uboIndex = glGetUniformBlockIndex(m_index, blockName.c_str());
 		
 		if (uboIndex == GL_INVALID_INDEX) {
 			throw logic_error("Invalid uniform block name: " + blockName);
 		}
 		
 		/*GLsizeiptr uboSize;
-		glGetActiveUniformBlockiv(m_program, uboIndex, GL_UNIFORM_BLOCK_DATA_SIZE, uboSize);
+		glGetActiveUniformBlockiv(m_index, uboIndex, GL_UNIFORM_BLOCK_DATA_SIZE, uboSize);
 
 		Buffer buffer = Buffer(GL_UNIFORM_BUFFER, uboSize, buffer, GL_STATIC_DRAW);
 

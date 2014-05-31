@@ -19,9 +19,15 @@ namespace engine {
 	public:
 		Program(const string& vertFileName, const string& fragFileName);
 		~Program();
+
+		/** Gets the OpenGL index of this Program. */
+		GLuint getIndex();
+
+		/** Tells OpenGL that this program will be used. */
+		void use();
 	protected:
 		/** Final OpenGL shader program identifier. */
-		GLuint m_program;
+		GLuint m_index;
 	private:
 		/** Shader identifiers. */
 		GLuint m_vert;

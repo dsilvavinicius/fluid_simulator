@@ -18,19 +18,19 @@ namespace engine {
 		m_vert = createShader(vertFileName, GL_VERTEX_SHADER);
 		m_frag = createShader(fragFileName, GL_FRAGMENT_SHADER);
 
-		m_program = glCreateProgram();
-		glAttachShader(m_program, m_vert);
-		glAttachShader(m_program, m_frag);
+		m_index = glCreateProgram();
+		glAttachShader(m_index, m_vert);
+		glAttachShader(m_index, m_frag);
 
 		// Linking.
-		glLinkProgram(m_program);
+		glLinkProgram(m_index);
 
 		GLint linkFlag;
-		glGetProgramiv(m_program, GL_LINK_STATUS, &linkFlag);
+		glGetProgramiv(m_index, GL_LINK_STATUS, &linkFlag);
 		
 		if (linkFlag != GL_TRUE) {
 			char log[LOG_SIZE];
-			glGetProgramInfoLog(m_program, LOG_SIZE, NULL, log);
+			glGetProgramInfoLog(m_index, LOG_SIZE, NULL, log);
 
 			throw logic_error(log);
 		}
@@ -42,9 +42,13 @@ namespace engine {
 	Program::~Program(){
 		glDeleteShader(m_vert);
 		glDeleteShader(m_frag);
-		glDeleteProgram(m_program);
+		glDeleteProgram(m_index);
 
 		OGL::checkError();
+	}
+
+	GLuint Program::getIndex() {
+		return m_index;
 	}
 
 	/**
@@ -83,5 +87,9 @@ namespace engine {
 
 			throw logic_error(log);
 		}
+	}
+
+	void Program::use() {
+		glUseProgram(m_index);
 	}
 }

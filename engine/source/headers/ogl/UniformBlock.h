@@ -4,34 +4,36 @@
 
 #include <vector>
 #include "engine/Program.h"
-#include "ogl/Buffer.h"
-
-/**
- * Represents an OpenGL's uniform block and should be used to initialize shader programs' uniform data.
- * Has support to be used in several OpenGL's programs at the same time.
- */
+#include "ogl/UniformBuffer.h"
 
 using namespace std;
 using namespace engine;
 using namespace ogl;
 
-namespace infrastructure
+namespace ogl
 {
+	/**
+	* Represents an OpenGL's uniform block and should be used to initialize shader programs' uniform data.
+	*/
 	class UniformBlock
 	{
 	public:
-		UniformBlock();
+		UniformBlock(string& name, UniformBufferPtr& buffer);
 		~UniformBlock();
 
 		/** Init this uniform block in the passed program. */
-		void initInProgram(ProgramPtr ptr);
+		void initInProgram(ProgramPtr& program);
 
 	protected:
-		BufferPtr buffer;
 
-	private:
-		/** List of Programs which have this UniformBlock. */
-		vector<ProgramPtr> program;
+		/** Indeix of this UniformBlock in OpenGl. */
+		GLuint m_index;
+
+		/** Buffer which has the UniformBlock actual data. */
+		UniformBufferPtr m_buffer;
+
+		/** Name of the Block inside the actual OpenGL program. */
+		string m_name;
 	};
 
 	typedef shared_ptr<UniformBlock> UniformBlockPtr;

@@ -13,10 +13,13 @@ namespace ogl {
 		Buffer(GLenum type, GLsizeiptr size, const GLvoid *data, GLenum usage);
 		~Buffer();
 		
+		/** OpenGL index of this buffer. */
+		GLuint getIndex() const;
+		
 		/** Size in bytes. */
-		GLsizeiptr const getSize();
+		GLsizeiptr getSize() const;
 	private:
-		GLuint m_bufferId;
+		GLuint m_index;
 		GLsizeiptr m_size;
 	};
 
