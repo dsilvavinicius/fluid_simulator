@@ -12,7 +12,6 @@ namespace ogl
 		~UniformBuffer();
 
 	private:
-
 	};
 
 	typedef shared_ptr<UniformBuffer> UniformBufferPtr;

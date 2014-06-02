@@ -14,6 +14,7 @@ namespace ogl
 {
 	/**
 	* Represents an OpenGL's uniform block and should be used to initialize shader programs' uniform data.
+	* Can be shared among Programs.
 	*/
 	class UniformBlock
 	{
@@ -26,7 +27,7 @@ namespace ogl
 
 	protected:
 
-		/** Indeix of this UniformBlock in OpenGl. */
+		/** Index of this UniformBlock in OpenGl. */
 		GLuint m_index;
 
 		/** Buffer which has the UniformBlock actual data. */
@@ -34,6 +35,15 @@ namespace ogl
 
 		/** Name of the Block inside the actual OpenGL program. */
 		string m_name;
+	private:
+		/** Each uniform block is given an binding index generated using this value. */
+		static int m_bindingIndexSeed;
+
+		/** Generates a binding index and increments m_bindingIndexSeed. */
+		static int generateBindingIndex();
+
+		/** Binding index for this buffer. Should be used to share uniform blocks among programs.*/
+		int m_bindingIndex;
 	};
 
 	typedef shared_ptr<UniformBlock> UniformBlockPtr;

@@ -9,33 +9,8 @@ include_directories (${ENGINE_INCLUDE_DIR})
 # Set source directories.
 set (CPP_DIR "source/src")
 
-set (INFRA_PACK_CPP_DIR ${CPP_DIR}/infrastructure)
-set (INFRA_PACK_HEADER_DIR ${ENGINE_HEADER_DIR}/infrastructure)
-
-set (ENGINE_PACK_CPP_DIR ${CPP_DIR}/engine)
-set (ENGINE_PACK_HEADER_DIR ${ENGINE_HEADER_DIR}/engine)
-
-set (OGL_PACK_CPP_DIR ${CPP_DIR}/ogl)
-set (OGL_PACK_HEADER_DIR ${ENGINE_HEADER_DIR}/ogl)
-
-set (SHADER_DIR ${SHADER_DIR} ${CPP_DIR}/shaders)
-
-# Specifying sources.
-file (GLOB_RECURSE ENGINE_SRCS ${ENGINE_PACK_HEADER_DIR}/*.h
-	${ENGINE_PACK_CPP_DIR}/*.cpp)
-file (GLOB_RECURSE INFRASTRUCTURE_SRCS ${INFRA_PACK_HEADER_DIR}/*.h
-	${INFRA_PACK_CPP_DIR}/*.cpp)
-file (GLOB_RECURSE OGL_SRCS ${OGL_PACK_HEADER_DIR}/*.h
-	${OGL_PACK_CPP_DIR}/*.cpp)
-file (GLOB_RECURSE SHADERS_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/source/src/shaders/*.vert
-	${CMAKE_CURRENT_SOURCE_DIR}/source/src/shaders/*.frag
-)
-
-# Creating source groups.
-source_group (engine FILES ${ENGINE_SRCS})
-source_group (infrastructure FILES ${INFRASTRUCTURE_SRCS})
-source_group (ogl FILES ${OGL_SRCS})
-source_group (shaders FILES ${SHADERS_SRCS})
+# Creates file groups for IDE and setups source directory related variables.
+create_file_groups (${ENGINE_HEADER_DIR} ${CPP_DIR})
 
 # Creating the library.
 add_library (Fluid_Engine

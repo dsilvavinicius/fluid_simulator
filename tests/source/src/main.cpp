@@ -15,9 +15,16 @@ TEST(RayDataBackPassTest, Creation) {
 			RayDataBackPass(mat4(1.f), mat4(1.f), vec3(0.f));
 		} catch (const exception& e) {
 			cerr << "Exception: " << e.what() << endl;
+			rethrow_exception();
 		}
 	} );
 	ASSERT_NO_THROW(OGL::checkError());
+}
+
+TEST(UniformBlock, Creation) {
+	ASSERT_NO_THROW({
+
+	});
 }
 
 int main(int argc, char** argv) {

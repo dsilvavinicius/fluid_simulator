@@ -9,12 +9,16 @@ set (TEST_INCLUDE_DIR ${TEST_INCLUDE_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries
 include_directories (${ENGINE_INCLUDE_DIR})
 include_directories (${TEST_INCLUDE_DIR})
 
-# Set source directories.
-set (CPP_DIR ${CPP_DIR} "cpp")
+# Creates file groups for IDE and setups source directory related variables.
+set (HEADER_DIR ${HEADER_DIR} "source/headers")
+set (CPP_DIR ${CPP_DIR} "source/src")
+create_file_groups (${HEADER_DIR} ${CPP_DIR})
 
-# Add the executable
+# Adds the executable
 add_executable (Tests
-	${CPP_DIR}/main.cpp)
+	${CPP_DIR}/main.cpp
+	
+	${OGL_PACK_HEADER_DIR}/UniformBlockTest.h		${OGL_PACK_CPP_DIR}/UniformBlockTest.cpp)
 
 set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/Win64")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")
