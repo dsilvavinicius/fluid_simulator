@@ -4,7 +4,7 @@
 ##############################
 
 # Set include dirs.
-set (TEST_INCLUDE_DIR ${TEST_INCLUDE_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/include")
+set (TEST_INCLUDE_DIR ${TEST_INCLUDE_DIR} "libraries/include")
 
 include_directories (${ENGINE_INCLUDE_DIR})
 include_directories (${TEST_INCLUDE_DIR})
@@ -14,11 +14,16 @@ set (HEADER_DIR ${HEADER_DIR} "source/headers")
 set (CPP_DIR ${CPP_DIR} "source/src")
 create_file_groups (${HEADER_DIR} ${CPP_DIR})
 
+# Bug fix. Since engine and tests has the same directoty structure, the test headers aren't
+# visible in test cpps (they are being overwriten by engine directories). The line below fixes it.
+include_directories (${HEADER_DIR})
+
 # Adds the executable
 add_executable (Tests
 	${CPP_DIR}/main.cpp
 	
-	${OGL_PACK_HEADER_DIR}/UniformBlockTest.h		${OGL_PACK_CPP_DIR}/UniformBlockTest.cpp)
+	${INFRA_PACK_HEADER_DIR}/Test.h				${INFRA_PACK_CPP_DIR}/Test.cpp
+	${OGL_PACK_HEADER_DIR}/UniformBlockTest.h	${OGL_PACK_CPP_DIR}/UniformBlockTest.cpp)
 
 set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/Win64")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")

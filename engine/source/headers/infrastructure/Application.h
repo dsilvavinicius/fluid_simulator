@@ -20,10 +20,10 @@ namespace infrastructure {
 	
 	private:
 		Application();
-		//Application(Application const&);
-		//void operator=(Application const&);
 		static void simulationLoop();
 	};
+
+	typedef shared_ptr<Application> ApplicationPtr;
 }
 
 #endif

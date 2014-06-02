@@ -21,11 +21,8 @@ TEST(RayDataBackPassTest, Creation) {
 	ASSERT_NO_THROW(OGL::checkError());
 }
 
-TEST(UniformBlock, Creation) {
-	ASSERT_NO_THROW({
 
-	});
-}
+#include "ogl/UniformBlockTest.cpp"
 
 int main(int argc, char** argv) {
 	::testing::InitGoogleTest(&argc, argv);
