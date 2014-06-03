@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "infrastructure/Test.h"
+#include "ogl/Test.h"
 #include "ogl/UniformBlock.h"
 #include "engine/RayDataBackPass.h"
 
@@ -8,7 +8,8 @@ using namespace ogl::test;
 
 namespace ogl
 {
-	namespace test {
+	namespace test
+	{
 		/*class MyClass
 		{
 		public:

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glm/glm.hpp>
 
-#include "infrastructure/Test.h"
+#include "ogl/Test.h"
 #include "engine/RayDataBackPass.h"
 
 using namespace glm;

@@ -1,4 +1,4 @@
-#include "infrastructure/Test.h"
+#include "ogl/Test.h"
 
 using namespace ogl;
 
