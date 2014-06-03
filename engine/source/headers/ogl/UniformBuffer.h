@@ -8,8 +8,7 @@ namespace ogl
 	class UniformBuffer : public Buffer
 	{
 	public:
-		UniformBuffer(GLsizeiptr size, const GLvoid *data, GLenum usage);
-		~UniformBuffer();
+		UniformBuffer(GLsizeiptr size, GLvoid* const data, GLenum usage);
 
 	private:
 	};

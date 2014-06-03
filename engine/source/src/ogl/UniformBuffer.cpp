@@ -2,12 +2,8 @@
 
 namespace ogl
 {
-	UniformBuffer::UniformBuffer(GLsizeiptr size, const GLvoid *data, GLenum usage) :
+	UniformBuffer::UniformBuffer(GLsizeiptr size,  GLvoid* const data, GLenum usage) :
 		Buffer(GL_UNIFORM_BUFFER, size, data, usage)
-	{
-	}
-
-	UniformBuffer::~UniformBuffer()
 	{
 	}
 }

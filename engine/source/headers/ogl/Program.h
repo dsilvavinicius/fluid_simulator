@@ -13,7 +13,7 @@ namespace ogl
 	class Program
 	{
 	public:
-		Program(const string& vertFileName, const string& fragFileName);
+		Program(const string& vertSource, const string& fragSource);
 
 		/** Gets the OpenGL index of this Program. */
 		GLuint getIndex();
@@ -23,9 +23,6 @@ namespace ogl
 	protected:
 		/** Final OpenGL shader program identifier. */
 		ProgramInitializerPtr m_programInit;
-
-		/** Derived Programs should init uniforms here. */
-		virtual void initUniforms() = 0;
 	};
 	
 	typedef shared_ptr<Program> ProgramPtr;

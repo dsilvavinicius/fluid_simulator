@@ -4,11 +4,13 @@
 
 namespace ogl
 {
-	Program::Program(const string& vertFileName, const string& fragFileName) {
+	Program::Program(const string& vertSource, const string& fragSource)
+	{
 		m_programInit = ProgramInitializerPtr(
-			&ProgramInitializer::newProgramInitializer(vertFileName, fragFileName, [this]() { initUniforms(); })
-		);
+			&ProgramInitializer::newProgramInitializer(vertSource, fragSource)
+			);
 	}
+
 
 	GLuint Program::getIndex() {
 		return m_programInit->getIndex();

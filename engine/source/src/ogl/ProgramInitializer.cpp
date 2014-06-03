@@ -10,12 +10,16 @@ namespace ogl {
 	
 	const int ProgramInitializer::LOG_SIZE = 5000;
 
-	/**
-	 * Creates and compiles the post-processing program shaders.
-	 */
-	ProgramInitializer::ProgramInitializer(const string& vertFileName, const string& fragFileName) {
-		m_vert = createShader(vertFileName, GL_VERTEX_SHADER);
-		m_frag = createShader(fragFileName, GL_FRAGMENT_SHADER);
+	ProgramInitializer& ProgramInitializer::newProgramInitializer(const string& vertSource,
+		const string& fragSource)
+	{
+		ProgramInitializer& init = ProgramInitializer(vertSource, fragSource);
+		return init;
+	}
+
+	ProgramInitializer::ProgramInitializer(const string& vertSource, const string& fragSource) {
+		m_vert = createShader(vertSource, GL_VERTEX_SHADER);
+		m_frag = createShader(fragSource, GL_FRAGMENT_SHADER);
 
 		m_index = glCreateProgram();
 		glAttachShader(m_index, m_vert);
@@ -50,12 +54,7 @@ namespace ogl {
 		return m_index;
 	}
 
-	/**
-	 * Creates a shader given the source file name and type.
-	 */
-	GLint ProgramInitializer::createShader(const string& fileName, const GLenum type) {
-		string source = Utils::loadFile(fileName);
-		
+	GLint ProgramInitializer::createShader(const string& source, const GLenum type) {
 		const GLchar* sourceC = source.c_str();
 		const GLint lenght = (GLint) source.length();
 		

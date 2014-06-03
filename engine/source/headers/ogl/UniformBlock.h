@@ -21,7 +21,7 @@ namespace ogl
 		~UniformBlock();
 
 		/** Init this uniform block in the passed program. */
-		void initInProgram(ProgramPtr& program);
+		void initInProgram(Program& program);
 
 	protected:
 

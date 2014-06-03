@@ -14,6 +14,13 @@ using namespace ogl;
  */
 namespace engine {
 	class RayDataBackPass : public Program {
+	public:
+		RayDataBackPass(mat4 modelView, mat4 Projection, vec3 camPos);
+		~RayDataBackPass();
+		void initUniforms();
+	protected:
+		void initFrameBuffer(DisplaySettingsPtr& display);
+		void clearRenderBuffers();
 	private:
 		static const char *m_vertShaderFileName;
 		static const char *m_fragShaderFileName;
@@ -22,14 +29,6 @@ namespace engine {
 		GLuint m_frameBufferId;
 		/** Renderbuffer attached to m_frameBufferId. */
 		GLuint m_renderBufferId;
-	protected:
-		void initUniforms();
-		void initFrameBuffer(DisplaySettingsPtr& display);
-		void clearUniforms();
-		void clearRenderBuffers();
-	public:
-		RayDataBackPass(mat4 modelView, mat4 Projection, vec3 camPos);
-		~RayDataBackPass();
 	};
 
 	typedef shared_ptr<RayDataBackPass> RayDataBackPassPtr;

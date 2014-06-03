@@ -17,15 +17,8 @@ namespace ogl {
 	class ProgramInitializer
 	{
 	public:
-		/** Use this factory to create ProgramInitializers. Compiles shaders and init uniforms of an OpenGL program. */
-		template<typename Func>
-		static ProgramInitializer& newProgramInitializer(const string& vertFileName, const string& fragFileName,
-			Func initUniforms)
-		{
-			ProgramInitializer& init = ProgramInitializer(vertFileName, fragFileName);
-			initUniforms();
-			return init;
-		}
+		/** Use this factory to create ProgramInitializers. Compiles shaders of an OpenGL program. */
+		static ProgramInitializer& newProgramInitializer(const string& vertSource, const string& fragSource);
 		
 		~ProgramInitializer();
 
@@ -42,10 +35,19 @@ namespace ogl {
 		/** Compilation and link logs size. */
 		const static int LOG_SIZE;
 
-		/** Use the static factory to access this constructor. */
-		ProgramInitializer(const string& vertFileName, const string& fragFileName);
+		/**
+		* Creates and compiles the post-processing program shaders.
+		* Use the static factory to access this constructor.
+		* @param vertSource: string with source of the vertex program.
+		* @param fragSource: string with source of the frag program.
+		*/
+		ProgramInitializer(const string& vertSource, const string& fragSource);
 
-		GLint createShader(const string& fileName, const GLenum type);
+		/**
+		* Creates a shader given the source and type.
+		*/
+		GLint createShader(const string& source, const GLenum type);
+		
 		void compileShader(GLuint shader);
 	};
 	

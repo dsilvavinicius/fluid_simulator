@@ -21,12 +21,12 @@ namespace ogl
 		return  m_bindingIndexSeed++;
 	}
 
-	void UniformBlock::initInProgram(ProgramPtr& program)
+	void UniformBlock::initInProgram(Program& program)
 	{
-		program->use();
+		program.use();
 		
-		m_index = glGetUniformBlockIndex(program->getIndex(), m_name.c_str());
-		glUniformBlockBinding(program->getIndex(), m_index, m_bindingIndex);
+		m_index = glGetUniformBlockIndex(program.getIndex(), m_name.c_str());
+		glUniformBlockBinding(program.getIndex(), m_index, m_bindingIndex);
 
 		OGL::checkError();
 	}
