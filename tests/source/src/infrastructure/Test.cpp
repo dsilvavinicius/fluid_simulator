@@ -2,7 +2,7 @@
 
 namespace infrastructure
 {
-	Test::Test() {
+	void Test::SetUp() {
 		m_app = ApplicationPtr(&Application::getInstance());
 		m_app->createMainWindow();
 	}

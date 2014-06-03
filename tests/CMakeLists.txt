@@ -17,13 +17,15 @@ create_file_groups (${HEADER_DIR} ${CPP_DIR})
 # Bug fix. Since engine and tests has the same directoty structure, the test headers aren't
 # visible in test cpps (they are being overwriten by engine directories). The line below fixes it.
 include_directories (${HEADER_DIR})
+include_directories (${CPP_DIR})
 
 # Adds the executable
 add_executable (Tests
 	${CPP_DIR}/main.cpp
 	
 	${INFRA_PACK_HEADER_DIR}/Test.h				${INFRA_PACK_CPP_DIR}/Test.cpp
-	${OGL_PACK_HEADER_DIR}/UniformBlockTest.h	${OGL_PACK_CPP_DIR}/UniformBlockTest.cpp)
+	${ENGINE_PACK_CPP_DIR}/RayDataBackPassTest.cpp
+	${OGL_PACK_CPP_DIR}/UniformBlockTest.cpp)
 
 set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/Win64")
 set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")

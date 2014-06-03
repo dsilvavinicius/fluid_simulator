@@ -12,7 +12,7 @@ using namespace glm;
  * section 30.3.1.
  */
 namespace engine {
-	class RayDataBackPass : Program {
+	class RayDataBackPass : public Program {
 	private:
 		static const char *m_vertShaderFileName;
 		static const char *m_fragShaderFileName;
@@ -30,5 +30,7 @@ namespace engine {
 		RayDataBackPass(mat4 modelView, mat4 Projection, vec3 camPos);
 		~RayDataBackPass();
 	};
+
+	typedef shared_ptr<RayDataBackPass> RayDataBackPassPtr;
 }
 #endif

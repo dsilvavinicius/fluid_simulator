@@ -10,8 +10,7 @@ namespace infrastructure
 	class Test : public ::testing::Test
 	{
 	public:
-		Test();
-		virtual ~Test();
+		virtual void SetUp();
 
 	private:
 		ApplicationPtr m_app;
