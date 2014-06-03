@@ -1,5 +1,5 @@
-#ifndef PROGRAM_H
-#define PROGRAM_H
+#ifndef PROGRAM_INITIALIZER_H
+#define PROGRAM_INITIALIZER_H
 
 #include <memory>
 #include <string>
@@ -10,25 +10,27 @@
 using namespace std;
 
 /**
- * Shader ProgramInitializer class for post-processing effects. Each Program has a vertex and fragment shader and a framebuffer. 
+ * Initializer for OpenGL shader programs. Ensure that a program is compiled and have their uniforms initialized. 
  */
 namespace ogl {
 	
 	class ProgramInitializer
 	{
 	public:
-		/** Use this factory to create ProgramInitializers. Compiles and init uniforms of an OpenGL program. */
+		/** Use this factory to create ProgramInitializers. Compiles shaders and init uniforms of an OpenGL program. */
 		template<typename Func>
 		static ProgramInitializer& newProgramInitializer(const string& vertFileName, const string& fragFileName,
-			Func initUniforms);
+			Func initUniforms)
+		{
+			ProgramInitializer& init = ProgramInitializer(vertFileName, fragFileName);
+			initUniforms();
+			return init;
+		}
 		
 		~ProgramInitializer();
 
 		/** Gets the OpenGL index of this Program. */
 		GLuint getIndex();
-
-		/** Tells OpenGL that this program will be used. */
-		void use();
 	protected:
 		/** Final OpenGL shader program identifier. */
 		GLuint m_index;
@@ -47,7 +49,7 @@ namespace ogl {
 		void compileShader(GLuint shader);
 	};
 	
-	typedef shared_ptr<ProgramInitializer> ProgramPtr;
+	typedef shared_ptr<ProgramInitializer> ProgramInitializerPtr;
 }
 
 #endif

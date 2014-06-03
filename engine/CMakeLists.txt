@@ -24,6 +24,7 @@ add_library (Fluid_Engine
 	${OGL_PACK_HEADER_DIR}/OGL.h				${OGL_PACK_CPP_DIR}/OGL.cpp
 	${OGL_PACK_HEADER_DIR}/Application.h		${OGL_PACK_CPP_DIR}/Application.cpp
 	${OGL_PACK_HEADER_DIR}/Program.h			${OGL_PACK_CPP_DIR}/Program.cpp
+	${OGL_PACK_HEADER_DIR}/ProgramInitializer.h	${OGL_PACK_CPP_DIR}/ProgramInitializer.cpp
 	${OGL_PACK_HEADER_DIR}/DisplaySettings.h	${OGL_PACK_CPP_DIR}/DisplaySettings.cpp
 	${OGL_PACK_HEADER_DIR}/Buffer.h				${OGL_PACK_CPP_DIR}/Buffer.cpp
 	${OGL_PACK_HEADER_DIR}/UniformBuffer.h		${OGL_PACK_CPP_DIR}/UniformBuffer.cpp

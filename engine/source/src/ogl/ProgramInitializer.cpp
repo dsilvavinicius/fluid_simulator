@@ -9,14 +9,6 @@ using namespace utils;
 namespace ogl {
 	
 	const int ProgramInitializer::LOG_SIZE = 5000;
-	
-	template<typename Func>
-	ProgramInitializer& newProgramInitializer(const string& vertFileName, const string& fragFileName, Func initUniforms)
-	{
-		ProgramInitializer& init = new ProgramInitalizer(vertFileName, fragFileName);
-		initUniforms();
-		return init;
-	}
 
 	/**
 	 * Creates and compiles the post-processing program shaders.
@@ -94,9 +86,5 @@ namespace ogl {
 
 			throw logic_error(log);
 		}
-	}
-
-	void ProgramInitializer::use() {
-		glUseProgram(m_index);
 	}
 }
