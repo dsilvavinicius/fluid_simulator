@@ -1,6 +1,6 @@
 #include <fstream>
 #include <GL/glew.h>
-#include "ogl/Program.h"
+#include "ogl/ProgramInitializer.h"
 #include "infrastructure/Utils.h"
 #include "ogl/OGL.h"
 
@@ -8,12 +8,20 @@ using namespace utils;
 
 namespace ogl {
 	
-	const int Program::LOG_SIZE = 5000;
+	const int ProgramInitializer::LOG_SIZE = 5000;
 	
+	template<typename Func>
+	ProgramInitializer& newProgramInitializer(const string& vertFileName, const string& fragFileName, Func initUniforms)
+	{
+		ProgramInitializer& init = new ProgramInitalizer(vertFileName, fragFileName);
+		initUniforms();
+		return init;
+	}
+
 	/**
 	 * Creates and compiles the post-processing program shaders.
 	 */
-	Program::Program(const string& vertFileName, const string& fragFileName) {
+	ProgramInitializer::ProgramInitializer(const string& vertFileName, const string& fragFileName) {
 		m_vert = createShader(vertFileName, GL_VERTEX_SHADER);
 		m_frag = createShader(fragFileName, GL_FRAGMENT_SHADER);
 
@@ -38,7 +46,7 @@ namespace ogl {
 	}
 
 
-	Program::~Program(){
+	ProgramInitializer::~ProgramInitializer(){
 		glDeleteShader(m_vert);
 		glDeleteShader(m_frag);
 		glDeleteProgram(m_index);
@@ -46,14 +54,14 @@ namespace ogl {
 		OGL::checkError();
 	}
 
-	GLuint Program::getIndex() {
+	GLuint ProgramInitializer::getIndex() {
 		return m_index;
 	}
 
 	/**
 	 * Creates a shader given the source file name and type.
 	 */
-	GLint Program::createShader(const string& fileName, const GLenum type) {
+	GLint ProgramInitializer::createShader(const string& fileName, const GLenum type) {
 		string source = Utils::loadFile(fileName);
 		
 		const GLchar* sourceC = source.c_str();
@@ -75,20 +83,20 @@ namespace ogl {
 	/**
 	 * Compiles a shader.
 	 */
-	void Program::compileShader(GLuint shader) {
+	void ProgramInitializer::compileShader(GLuint shader) {
 		glCompileShader(shader);
 		GLint compilationFlag;
 		glGetShaderiv(shader, GL_COMPILE_STATUS, &compilationFlag);
 
 		if (compilationFlag != GL_TRUE) {
-			char log[Program::LOG_SIZE];
+			char log[ProgramInitializer::LOG_SIZE];
 			glGetShaderInfoLog(shader, LOG_SIZE, NULL, log);
 
 			throw logic_error(log);
 		}
 	}
 
-	void Program::use() {
+	void ProgramInitializer::use() {
 		glUseProgram(m_index);
 	}
 }

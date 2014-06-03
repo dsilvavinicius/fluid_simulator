@@ -10,31 +10,33 @@ namespace ogl
 {
 	namespace test
 	{
-		/*class MyClass
+		class UniformBlockTest : public Test
 		{
 		public:
-		MyClass();
-		~MyClass();
+			virtual void SetUp()
+			{
+				Test::SetUp();
+
+			}
+		};
+
+		class TestProgram : Program
+		{
+		public:
+			TestProgram();
+			~TestProgram();
 
 		private:
 
 		};
 
-		MyClass::MyClass()
-		{
-		}
-
-		MyClass::~MyClass()
-		{
-		}
-
 
 		TEST_F(Test, Creation) {
-		ASSERT_NO_THROW({
-		RayDataBackPass()
-		UniformBlock();
+			ASSERT_NO_THROW({
+				RayDataBackPass()
+				UniformBlock();
 
-		});
-		}*/
+			}
+		);
 	}
 }

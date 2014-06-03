@@ -10,15 +10,19 @@
 using namespace std;
 
 /**
- * Shader Program class for post-processing effects. Each Program has a vertex and fragment shader and a framebuffer. 
+ * Shader ProgramInitializer class for post-processing effects. Each Program has a vertex and fragment shader and a framebuffer. 
  */
 namespace ogl {
 	
-	class Program
+	class ProgramInitializer
 	{
 	public:
-		Program(const string& vertFileName, const string& fragFileName);
-		~Program();
+		/** Use this factory to create ProgramInitializers. Compiles and init uniforms of an OpenGL program. */
+		template<typename Func>
+		static ProgramInitializer& newProgramInitializer(const string& vertFileName, const string& fragFileName,
+			Func initUniforms);
+		
+		~ProgramInitializer();
 
 		/** Gets the OpenGL index of this Program. */
 		GLuint getIndex();
@@ -36,11 +40,14 @@ namespace ogl {
 		/** Compilation and link logs size. */
 		const static int LOG_SIZE;
 
+		/** Use the static factory to access this constructor. */
+		ProgramInitializer(const string& vertFileName, const string& fragFileName);
+
 		GLint createShader(const string& fileName, const GLenum type);
 		void compileShader(GLuint shader);
 	};
 	
-	typedef shared_ptr<Program> ProgramPtr;
+	typedef shared_ptr<ProgramInitializer> ProgramPtr;
 }
 
 #endif
