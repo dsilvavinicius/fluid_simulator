@@ -1,9 +1,14 @@
 #include "infrastructure/Test.h"
 
-namespace infrastructure
+using namespace ogl;
+
+namespace ogl
 {
-	void Test::SetUp() {
-		m_app = ApplicationPtr(&Application::getInstance());
-		m_app->createMainWindow();
+	namespace test
+	{
+		void Test::SetUp() {
+			m_app = ApplicationPtr(&Application::getInstance());
+			m_app->createMainWindow();
+		}
 	}
 }

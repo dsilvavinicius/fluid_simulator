@@ -1,6 +1,6 @@
-#include "engine/DisplaySettings.h"
+#include "ogl/DisplaySettings.h"
 
-namespace engine {
+namespace ogl {
 	DisplaySettings::DisplaySettings(int resHeight, int resWidth) {
 		m_resHeight = resHeight;
 		m_resWidth = resWidth;

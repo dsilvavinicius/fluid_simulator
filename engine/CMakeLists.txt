@@ -14,17 +14,17 @@ create_file_groups (${ENGINE_HEADER_DIR} ${CPP_DIR})
 
 # Creating the library.
 add_library (Fluid_Engine
-	${INFRA_PACK_HEADER_DIR}/Application.h		${INFRA_PACK_CPP_DIR}/Application.cpp
 	${INFRA_PACK_HEADER_DIR}/Utils.h			${INFRA_PACK_CPP_DIR}/Utils.cpp
 	
-	${ENGINE_PACK_HEADER_DIR}/Program.h			${ENGINE_PACK_CPP_DIR}/Program.cpp
 	${ENGINE_PACK_HEADER_DIR}/Fluid3D.h			${ENGINE_PACK_CPP_DIR}/Fluid3D.cpp
 	${ENGINE_PACK_HEADER_DIR}/Boundary.h		${ENGINE_PACK_CPP_DIR}/Boundary.cpp
 	${ENGINE_PACK_HEADER_DIR}/RayData.h			${ENGINE_PACK_CPP_DIR}/RayData.cpp
 	${ENGINE_PACK_HEADER_DIR}/RayDataBackPass.h	${ENGINE_PACK_CPP_DIR}/RayDataBackPass.cpp
-	${ENGINE_PACK_HEADER_DIR}/DisplaySettings.h	${ENGINE_PACK_CPP_DIR}/DisplaySettings.cpp
 	
 	${OGL_PACK_HEADER_DIR}/OGL.h				${OGL_PACK_CPP_DIR}/OGL.cpp
+	${OGL_PACK_HEADER_DIR}/Application.h		${OGL_PACK_CPP_DIR}/Application.cpp
+	${OGL_PACK_HEADER_DIR}/Program.h			${OGL_PACK_CPP_DIR}/Program.cpp
+	${OGL_PACK_HEADER_DIR}/DisplaySettings.h	${OGL_PACK_CPP_DIR}/DisplaySettings.cpp
 	${OGL_PACK_HEADER_DIR}/Buffer.h				${OGL_PACK_CPP_DIR}/Buffer.cpp
 	${OGL_PACK_HEADER_DIR}/UniformBuffer.h		${OGL_PACK_CPP_DIR}/UniformBuffer.cpp
 	${OGL_PACK_HEADER_DIR}/UniformBlock.h		${OGL_PACK_CPP_DIR}/UniformBlock.cpp

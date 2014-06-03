@@ -12,7 +12,7 @@ using namespace std;
 /**
  * Shader Program class for post-processing effects. Each Program has a vertex and fragment shader and a framebuffer. 
  */
-namespace engine {
+namespace ogl {
 	
 	class Program
 	{

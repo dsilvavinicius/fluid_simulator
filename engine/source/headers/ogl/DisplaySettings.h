@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace engine {
+namespace ogl {
 	/**
 	 * Display Settings for programs.
 	 */

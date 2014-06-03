@@ -1,13 +1,12 @@
 #include <fstream>
 #include <GL/glew.h>
-#include "engine/Program.h"
+#include "ogl/Program.h"
 #include "infrastructure/Utils.h"
 #include "ogl/OGL.h"
 
 using namespace utils;
-using namespace ogl;
 
-namespace engine {
+namespace ogl {
 	
 	const int Program::LOG_SIZE = 5000;
 	

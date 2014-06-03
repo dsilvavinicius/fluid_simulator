@@ -3,9 +3,10 @@
 
 #include <glm/mat4x4.hpp>
 #include <glm/glm.hpp> 
-#include "Program.h"
+#include "ogl/Program.h"
 
 using namespace glm;
+using namespace ogl;
 
 /**
  * Back face pass to generate RayData. http://http.developer.nvidia.com/GPUGems3/gpugems3_ch30.html

@@ -1,13 +1,11 @@
-#include "engine\Program.h"
 #ifndef UNIFORM_BLOCK_H
 #define UNIFORM_BLOCK_H
 
 #include <vector>
-#include "engine/Program.h"
+#include "ogl/Program.h"
 #include "ogl/UniformBuffer.h"
 
 using namespace std;
-using namespace engine;
 using namespace ogl;
 
 namespace ogl

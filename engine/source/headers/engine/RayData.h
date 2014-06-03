@@ -3,9 +3,10 @@
 
 #include <glm/glm.hpp>
 #include <memory>
-#include "Program.h"
+#include "ogl/Program.h"
 
 using namespace std;
+using namespace ogl;
 
 /**
  * One of the quad boundaries of the fluid. Used in the fluid rendering, to raycast into the Fluid3D.

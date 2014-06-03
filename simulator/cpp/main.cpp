@@ -1,10 +1,10 @@
 #include <iostream>
 #include <memory>
 #include <exception>
-#include "infrastructure/Application.h"
+#include "ogl/Application.h"
 
 using namespace std;
-using namespace infrastructure;
+using namespace ogl;
 
 int main(int argc, char** argv) {
 	try {

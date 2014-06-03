@@ -1,7 +1,7 @@
-#include "engine/RayDataBackPass.h"
-#include "engine/DisplaySettings.h"
 #include "ogl/OGL.h"
 #include "ogl/Buffer.h"
+#include "ogl/DisplaySettings.h"
+#include "engine/RayDataBackPass.h"
 
 using namespace glm;
 using namespace ogl;

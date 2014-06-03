@@ -8,9 +8,9 @@
 using namespace::std;
 
 /**
- * Application class. Instantiates and manages the window and controls the simulation loop.
+ * OpenGL application class. Instantiates and manages the window and controls the loop.
  */
-namespace infrastructure {
+namespace ogl {
 	class Application
 	{
 	public:

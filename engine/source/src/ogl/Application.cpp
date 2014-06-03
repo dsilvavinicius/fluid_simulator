@@ -1,8 +1,8 @@
 #include <stdexcept>
 #include <gl/glew.h>
-#include "infrastructure/Application.h"
+#include "ogl/Application.h"
 
-namespace infrastructure {
+namespace ogl {
 	
 	Application& Application::getInstance() {
 		static Application app;
