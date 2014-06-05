@@ -1,1 +1,3 @@
 * To check for back faces of the simulation volume, use gl_FrontFacing inside the fragment shader.
+
+* Ideas for generic vector: http://stackoverflow.com/questions/13461869/c-push-multiple-types-onto-vector

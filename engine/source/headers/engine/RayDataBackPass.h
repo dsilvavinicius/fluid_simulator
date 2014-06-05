@@ -4,6 +4,7 @@
 #include <glm/mat4x4.hpp>
 #include <glm/glm.hpp> 
 #include "ogl/Program.h"
+#include "ogl/UniformBlock.h"
 
 using namespace glm;
 using namespace ogl;
@@ -17,13 +18,14 @@ namespace engine {
 	public:
 		RayDataBackPass(mat4 modelView, mat4 Projection, vec3 camPos);
 		~RayDataBackPass();
-		void initUniforms();
 	protected:
+		void initUniforms();
 		void initFrameBuffer(DisplaySettingsPtr& display);
 		void clearRenderBuffers();
 	private:
 		static const char *m_vertShaderFileName;
 		static const char *m_fragShaderFileName;
+		UniformBlockPtr uniforms;
 		
 		/** Framebuffer generated after program execution. */
 		GLuint m_frameBufferId;

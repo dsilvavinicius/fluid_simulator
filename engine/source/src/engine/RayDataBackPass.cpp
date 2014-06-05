@@ -30,8 +30,11 @@ namespace engine {
 	}
 
 	void RayDataBackPass::initUniforms() {
+		/*UniformBufferPtr buffer = UniformBufferPtr(new UniformBuffer());
+		uniforms = UniformBlockPtr(new UniformBlock("Uniforms", ));
+		
 		// Init "Matrices" block in vertex shader.
-		/*string blockName = "Matrices";
+		string blockName = "Matrices";
 		GLint uboIndex = glGetUniformBlockIndex(getIndex(), blockName.c_str());
 		
 		if (uboIndex == GL_INVALID_INDEX) {

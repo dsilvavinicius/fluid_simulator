@@ -3,13 +3,15 @@
 
 namespace ogl
 {
-	Buffer::Buffer(GLenum type, GLsizeiptr size, const GLvoid *data, GLenum usage)
+	Buffer::Buffer(GLenum type, GLsizeiptr size, GLenum usage, const GLvoid *data) :
+		m_type(type), m_usage(usage), m_size(size)
 	{
-		m_size = size;
-		
 		glGenBuffers(1, &m_index);
-		glBindBuffer(type, m_index);
-		glBufferData(type, size, data, usage);
+		glBindBuffer(m_type, m_index);
+
+		if (data) {
+			update(data);
+		}
 
 		OGL::checkError();
 	}
@@ -17,6 +19,13 @@ namespace ogl
 	Buffer::~Buffer()
 	{
 		glInvalidateBufferData(m_index);
+	}
+
+	void Buffer::update(const GLvoid *data) {
+		glBindBuffer(m_type, m_index);
+		glBufferData(m_type, m_size, data, m_usage);
+
+		OGL::checkError();
 	}
 
 	GLuint Buffer::getIndex() const { return m_index; }

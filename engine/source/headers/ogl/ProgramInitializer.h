@@ -17,9 +17,14 @@ namespace ogl {
 	class ProgramInitializer
 	{
 	public:
-		/** Use this factory to create ProgramInitializers. Compiles shaders of an OpenGL program. */
-		static ProgramInitializer& newProgramInitializer(const string& vertSource, const string& fragSource);
-		
+		/**
+		* Creates and compiles the post-processing program shaders.
+		* Use the static factory to access this constructor.
+		* @param vertSource: string with source of the vertex program.
+		* @param fragSource: string with source of the frag program.
+		*/
+		ProgramInitializer(const string& vertSource, const string& fragSource);
+
 		~ProgramInitializer();
 
 		/** Gets the OpenGL index of this Program. */
@@ -34,14 +39,6 @@ namespace ogl {
 
 		/** Compilation and link logs size. */
 		const static int LOG_SIZE;
-
-		/**
-		* Creates and compiles the post-processing program shaders.
-		* Use the static factory to access this constructor.
-		* @param vertSource: string with source of the vertex program.
-		* @param fragSource: string with source of the frag program.
-		*/
-		ProgramInitializer(const string& vertSource, const string& fragSource);
 
 		/**
 		* Creates a shader given the source and type.

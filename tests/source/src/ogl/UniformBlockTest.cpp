@@ -17,33 +17,37 @@ namespace ogl
 			TestProgram() : Program(vertSource, fragSource) {
 				initUniforms();
 			}
-		
+		protected:
 			void initUniforms() {
 				use();
 				
 				vec4 uniformValue{ 1.f, 1.f, 1.f, 1.f };
 				
-				UniformBufferPtr buffer = UniformBufferPtr(
-					new UniformBuffer(sizeof(vec4), (GLvoid* const)&uniformValue, GL_STATIC_DRAW));
-				
-				uniforms = UniformBlockPtr(new UniformBlock(string("Uniforms"), buffer));
-				uniforms->initInProgram(*this);
+				vector<AnyUniformPtr> uniformVector;
+				uniformVector.push_back(AnyUniformPtr(new AnyUniform("uniform0", uniformValue)));
+				uniforms = UniformBlockPtr(new UniformBlock(string("Uniforms"), uniformVector));
+				uniforms->transferToProgram(*this);
 			}
 		private:
 			UniformBlockPtr uniforms;
 			
-			const string vertSource =
-				"#version 330 core\n"
-				"uniform Uniforms {"
-				"	vec4 camPos;"
-				"};"
-				"void main() {"
-				"}";
-			const string fragSource =
-				"#version 330 core\n"
-				"void main() {"
-				"}";
+			static const string vertSource;
+			static const string fragSource;
+				
 		};
+
+		const string TestProgram::vertSource =
+			"#version 330 core\n"
+			"uniform Uniforms {"
+			"	vec4 uniform0;"
+			"};"
+			"void main() {"
+			"}";
+		const string TestProgram::fragSource =
+			"#version 330 core\n"
+			"void main() {"
+			"}";
+
 		typedef shared_ptr<TestProgram> TestProgramPtr;
 
 		class UniformBlockTest : public Test

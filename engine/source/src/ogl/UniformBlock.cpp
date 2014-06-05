@@ -5,28 +5,47 @@ namespace ogl
 {
 	int UniformBlock::m_bindingIndexSeed = 0;
 
-	UniformBlock::UniformBlock(string& name, UniformBufferPtr& buffer)
+	UniformBlock::UniformBlock(string& name, vector<AnyUniformPtr>& uniforms)
 	{
 		m_name = name;
-		m_buffer = buffer;
+		for (auto& uni : uniforms) {
+			m_uniforms[uni->getName()] = uni;
+		}
 		m_bindingIndex = generateBindingIndex();
-		glBindBufferBase(GL_UNIFORM_BUFFER, m_bindingIndex, m_buffer->getIndex());
-
-		OGL::checkError();
+		m_buffer = nullptr;
 	}
 
 	UniformBlock::~UniformBlock() {}
+
+	template <typename T>
+	void UniformBlock::change(string uniformName, T value)
+	{
+		m_uniforms[uniformName]->setValue(value);
+	}
 
 	int UniformBlock::generateBindingIndex() {
 		return  m_bindingIndexSeed++;
 	}
 
-	void UniformBlock::initInProgram(Program& program)
+	void UniformBlock::transferToProgram(Program& program)
 	{
 		program.use();
 		
-		m_index = glGetUniformBlockIndex(program.getIndex(), m_name.c_str());
-		glUniformBlockBinding(program.getIndex(), m_index, m_bindingIndex);
+		GLuint programIndex = program.getIndex();
+		auto blockIndex = glGetUniformBlockIndex(programIndex, m_name.c_str());
+		GLint dataSize;
+		glGetActiveUniformBlockiv(programIndex, blockIndex, GL_UNIFORM_BLOCK_DATA_SIZE, &dataSize);
+
+		OGL::checkError();
+
+		if (!m_buffer)
+		{
+			m_buffer = UniformBufferPtr(new UniformBuffer(dataSize, GL_STATIC_DRAW));
+		}
+		m_buffer->update(programIndex, m_uniforms);
+
+		glBindBufferBase(GL_UNIFORM_BUFFER, m_bindingIndex, m_buffer->getIndex());
+		glUniformBlockBinding(programIndex, blockIndex, m_bindingIndex);
 
 		OGL::checkError();
 	}

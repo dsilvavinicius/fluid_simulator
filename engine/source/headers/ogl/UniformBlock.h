@@ -2,7 +2,10 @@
 #define UNIFORM_BLOCK_H
 
 #include <vector>
+#include <map>
+
 #include "ogl/Program.h"
+#include "ogl/Uniform.h"
 #include "ogl/UniformBuffer.h"
 
 using namespace std;
@@ -17,18 +20,21 @@ namespace ogl
 	class UniformBlock
 	{
 	public:
-		UniformBlock(string& name, UniformBufferPtr& buffer);
+		UniformBlock(string& name, vector<AnyUniformPtr>& uniforms);
 		~UniformBlock();
 
-		/** Init this uniform block in the passed program. */
-		void initInProgram(Program& program);
+		/** Changes the value of an uniform */
+		template <typename T>
+		void change(string uniformName, T value);
+
+		/** Transfer this uniform block to the passed program. */
+		void transferToProgram(Program& program);
 
 	protected:
+		/** Uniform map. The key is the name of the uniform in shader and the value is the actual uniform. */
+		map<string, AnyUniformPtr> m_uniforms;
 
-		/** Index of this UniformBlock in OpenGl. */
-		GLuint m_index;
-
-		/** Buffer which has the UniformBlock actual data. */
+		/** Buffer used to transfer data do GPU. */
 		UniformBufferPtr m_buffer;
 
 		/** Name of the Block inside the actual OpenGL program. */

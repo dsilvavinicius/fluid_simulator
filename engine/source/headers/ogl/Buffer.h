@@ -8,19 +8,25 @@
 using namespace std;
 
 namespace ogl {
-	class Buffer {
+	class Buffer
+	{
 	public:
-		Buffer(GLenum type, GLsizeiptr size, const GLvoid *data, GLenum usage);
+		Buffer(GLenum type, GLsizeiptr size, GLenum usage, const GLvoid *data = nullptr);
 		~Buffer();
 		
+		/** Updates the buffer contents. */
+		void update(const GLvoid *data);
+
 		/** OpenGL index of this buffer. */
 		GLuint getIndex() const;
 		
 		/** Size in bytes. */
 		GLsizeiptr getSize() const;
-	private:
+	protected:
+		GLenum &m_type;
+		GLenum &m_usage;
 		GLuint m_index;
-		GLsizeiptr m_size;
+		GLsizeiptr &m_size;
 	};
 
 	typedef shared_ptr<Buffer> BufferPtr;

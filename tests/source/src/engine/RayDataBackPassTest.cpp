@@ -12,7 +12,7 @@ namespace engine
 {
 	namespace test
 	{
-		class RayDataBackPassTest : public Test
+		/*class RayDataBackPassTest : public Test
 		{
 		protected:
 			virtual void SetUp(){
@@ -29,6 +29,6 @@ namespace engine
 			ASSERT_NO_THROW({
 				m_program->use();
 			});
-		}
+		}*/
 	}
 }

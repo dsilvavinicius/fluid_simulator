@@ -10,13 +10,6 @@ namespace ogl {
 	
 	const int ProgramInitializer::LOG_SIZE = 5000;
 
-	ProgramInitializer& ProgramInitializer::newProgramInitializer(const string& vertSource,
-		const string& fragSource)
-	{
-		ProgramInitializer& init = ProgramInitializer(vertSource, fragSource);
-		return init;
-	}
-
 	ProgramInitializer::ProgramInitializer(const string& vertSource, const string& fragSource) {
 		m_vert = createShader(vertSource, GL_VERTEX_SHADER);
 		m_frag = createShader(fragSource, GL_FRAGMENT_SHADER);
