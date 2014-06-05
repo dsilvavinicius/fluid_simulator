@@ -3,7 +3,7 @@
 
 namespace ogl
 {
-	Buffer::Buffer(GLenum type, GLsizeiptr size, GLenum usage, const GLvoid *data) :
+	Buffer::Buffer(GLenum type, GLsizei& size, GLenum usage, const GLvoid *data) :
 		m_type(type), m_usage(usage), m_size(size)
 	{
 		glGenBuffers(1, &m_index);

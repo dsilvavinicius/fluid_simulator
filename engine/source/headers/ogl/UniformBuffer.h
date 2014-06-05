@@ -10,7 +10,7 @@ namespace ogl
 	class UniformBuffer : public Buffer
 	{
 	public:
-		UniformBuffer(GLsizeiptr size, GLenum usage);
+		UniformBuffer(GLsizei& size, GLenum usage);
 		
 		/** Updates this buffer with the uniform values in the map. */
 		void update(GLuint& programIndex, map<string, AnyUniformPtr>& uniforms);

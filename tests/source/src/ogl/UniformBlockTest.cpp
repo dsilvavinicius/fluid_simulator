@@ -17,6 +17,8 @@ namespace ogl
 			TestProgram() : Program(vertSource, fragSource) {
 				initUniforms();
 			}
+
+			~TestProgram() {}
 		protected:
 			void initUniforms() {
 				use();
@@ -42,10 +44,14 @@ namespace ogl
 			"	vec4 uniform0;"
 			"};"
 			"void main() {"
+			"	gl_Position = uniform0;"
 			"}";
 		const string TestProgram::fragSource =
 			"#version 330 core\n"
+			"in vec4 pos;"
+			"out vec4 finalColor;"
 			"void main() {"
+			"	finalColor = pos;"
 			"}";
 
 		typedef shared_ptr<TestProgram> TestProgramPtr;

@@ -40,7 +40,7 @@ namespace ogl
 
 		if (!m_buffer)
 		{
-			m_buffer = UniformBufferPtr(new UniformBuffer(dataSize, GL_STATIC_DRAW));
+			m_buffer = UniformBufferPtr(new UniformBuffer((GLsizei)dataSize, GL_STATIC_DRAW));
 		}
 		m_buffer->update(programIndex, m_uniforms);
 

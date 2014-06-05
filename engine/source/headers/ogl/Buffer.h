@@ -11,7 +11,7 @@ namespace ogl {
 	class Buffer
 	{
 	public:
-		Buffer(GLenum type, GLsizeiptr size, GLenum usage, const GLvoid *data = nullptr);
+		Buffer(GLenum type, GLsizei& size, GLenum usage, const GLvoid *data = nullptr);
 		~Buffer();
 		
 		/** Updates the buffer contents. */
@@ -23,10 +23,10 @@ namespace ogl {
 		/** Size in bytes. */
 		GLsizeiptr getSize() const;
 	protected:
-		GLenum &m_type;
-		GLenum &m_usage;
+		GLenum m_type;
+		GLenum m_usage;
 		GLuint m_index;
-		GLsizeiptr &m_size;
+		GLsizei m_size;
 	};
 
 	typedef shared_ptr<Buffer> BufferPtr;

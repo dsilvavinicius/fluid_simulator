@@ -3,7 +3,7 @@
 
 namespace ogl
 {
-	UniformBuffer::UniformBuffer(GLsizeiptr size, GLenum usage) :
+	UniformBuffer::UniformBuffer(GLsizei& size, GLenum usage) :
 		Buffer(GL_UNIFORM_BUFFER, size, usage) {}
 
 	void UniformBuffer::update(GLuint& programIndex, map<string, AnyUniformPtr>& uniforms)
