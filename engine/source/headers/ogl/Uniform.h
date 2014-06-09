@@ -15,6 +15,8 @@ namespace ogl
 	public:
 		template <typename T> AnyUniform(string name, T const& value);
 		
+		~AnyUniform();
+
 		/** Not-typed API. Use when value type is unknown. */
 		string& getName();
 

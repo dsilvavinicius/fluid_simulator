@@ -14,13 +14,15 @@ namespace ogl {
 	class Application
 	{
 	public:
-		static Application& getInstance();
+		Application();
 		~Application();
+		/** Finished the main loop. */
+		void tearDown();
+		
 		void createMainWindow();
 		void enterSimulationLoop();
 	
 	private:
-		Application();
 		static void simulationLoop();
 	};
 

@@ -18,7 +18,8 @@ namespace ogl
 
 	Buffer::~Buffer()
 	{
-		glInvalidateBufferData(m_index);
+		glDeleteBuffers(1, &m_index);
+		//glInvalidateBufferData(m_index);
 	}
 
 	void Buffer::update(const GLvoid *data) {

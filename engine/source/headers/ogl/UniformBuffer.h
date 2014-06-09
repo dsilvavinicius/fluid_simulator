@@ -11,6 +11,8 @@ namespace ogl
 	{
 	public:
 		UniformBuffer(GLsizei& size, GLenum usage);
+
+		~UniformBuffer();
 		
 		/** Updates this buffer with the uniform values in the map. */
 		void update(GLuint& programIndex, map<string, AnyUniformPtr>& uniforms);

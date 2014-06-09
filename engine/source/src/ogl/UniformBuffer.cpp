@@ -6,6 +6,8 @@ namespace ogl
 	UniformBuffer::UniformBuffer(GLsizei& size, GLenum usage) :
 		Buffer(GL_UNIFORM_BUFFER, size, usage) {}
 
+	UniformBuffer::~UniformBuffer() {}
+
 	void UniformBuffer::update(GLuint& programIndex, map<string, AnyUniformPtr>& uniforms)
 	{
 		const GLsizei numUniforms = (GLsizei) uniforms.size();

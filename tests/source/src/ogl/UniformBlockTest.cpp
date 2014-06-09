@@ -59,7 +59,7 @@ namespace ogl
 		class UniformBlockTest : public Test
 		{
 		protected:
-			virtual void SetUp()
+			void SetUp()
 			{
 				Test::SetUp();
 				m_program = TestProgramPtr(new TestProgram());
