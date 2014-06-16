@@ -30,6 +30,9 @@ add_library (Fluid_Engine
 	${OGL_PACK_HEADER_DIR}/Uniform.h			${OGL_PACK_CPP_DIR}/Uniform.cpp
 	${OGL_PACK_HEADER_DIR}/UniformBuffer.h		${OGL_PACK_CPP_DIR}/UniformBuffer.cpp
 	${OGL_PACK_HEADER_DIR}/UniformBlock.h		${OGL_PACK_CPP_DIR}/UniformBlock.cpp
+	${OGL_PACK_HEADER_DIR}/FrameBuffer.h		${OGL_PACK_CPP_DIR}/FrameBuffer.cpp
+	${OGL_PACK_HEADER_DIR}/RenderBuffer.h		${OGL_PACK_CPP_DIR}/RenderBuffer.cpp
+	${OGL_PACK_HEADER_DIR}/ColorBuffer.h		${OGL_PACK_CPP_DIR}/ColorBuffer.cpp
 	
 	# Shaders
 	${SHADER_DIR}/RayDataBackPass.vert			${SHADER_DIR}/RayDataBackPass.frag)
