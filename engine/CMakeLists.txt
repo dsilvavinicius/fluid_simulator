@@ -35,15 +35,21 @@ add_library (Fluid_Engine
 	${SHADER_DIR}/RayDataBackPass.vert			${SHADER_DIR}/RayDataBackPass.frag)
 	
 # Add libraries.
-# TODO: set options for platform and build type.
-set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/engine/libraries/lib/Win64")
-set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/freeglut.lib")
-set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/glew32.lib")
+if (UNIX)
+	set (LIBS_DIR ${LIBS_DIR} "freeglut, glew32, GL")
+else (WIN32)
+	set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/engine/libraries/lib/Win64")
+	set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/freeglut.lib")
+	set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/glew32.lib")
+	# OpenGL32.lib is assumed to be bundled with Windows.
+	set (LIBS_DIR ${LIBS_DIR} "OpenGL32.lib")
+else ()
+	message ("Unexpected operating system. Exiting prematurelly.")
+	return ()
+endif ()
 
 cmake_policy(SET CMP0015 NEW) # Use new policy in link_directories(): output absolute paths.
 target_link_libraries (Fluid_Engine ${LIBS_DIR})
-# OpenGL32.lib is assumed to be bundled with Windows.
-target_link_libraries (Fluid_Engine "OpenGL32.lib")
 		
 # Install target.
 install (TARGETS Fluid_Engine DESTINATION ${PROJECT_BINARY_DIR}/engine)

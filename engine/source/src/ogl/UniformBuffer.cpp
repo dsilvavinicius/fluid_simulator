@@ -1,3 +1,5 @@
+#include <cstring>
+
 #include "ogl/UniformBuffer.h"
 #include "ogl/OGL.h"
 

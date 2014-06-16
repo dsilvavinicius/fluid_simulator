@@ -14,7 +14,7 @@ namespace ogl
 	{
 	public:
 		template <typename T> AnyUniform(string name, T const& value);
-		
+
 		~AnyUniform();
 
 		/** Not-typed API. Use when value type is unknown. */
@@ -22,10 +22,10 @@ namespace ogl
 
 		/** Not-typed API. Use when value type is unknown. */
 		GLvoid* getRawValue();
-		
+
 		/** Typed API. Use when the value type is known. */
 		template <typename T> T& getValue();
-		
+
 		/** Typed API. Use when the value type is known. */
 		template <typename T> void setValue(T value);
 	private:
@@ -49,7 +49,7 @@ namespace ogl
 		public:
 			Uniform(AnyUniform& anyUniform, string name, T initialValue) :
 				AbstractUniform(anyUniform), m_name(name), m_value(initialValue) {}
-			
+
 			~Uniform() {}
 
 			string& getName() { return m_name; }
@@ -58,10 +58,10 @@ namespace ogl
 			T getValue() { return m_value; }
 
 			/** Typed setValue. */
-			void setValue(T value) 
+			void setValue(T value)
 			{
 				m_value = value;
-				anyUniform.m_rawValue = (GLvoid*)&m_value;
+				m_anyUniform.m_rawValue = (GLvoid*)&m_value;
 			}
 		private:
 			T m_value;
@@ -70,10 +70,10 @@ namespace ogl
 
 		/** Pointer to the actual Uniform.*/
 		AbstractUniformPtr m_ptr;
-		
+
 		/** Raw value for the not-typed API. */
 		GLvoid* m_rawValue;
-		
+
 		/** Name for the not-typed API. */
 		string m_name;
 	};

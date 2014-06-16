@@ -3,7 +3,7 @@
 
 #include <utility>
 #include <memory>
-#include <gl/glew.h>
+#include <GL/glew.h>
 
 using namespace std;
 
@@ -13,13 +13,13 @@ namespace ogl {
 	public:
 		Buffer(GLenum type, GLsizei& size, GLenum usage, const GLvoid *data = nullptr);
 		~Buffer();
-		
+
 		/** Updates the buffer contents. */
 		void update(const GLvoid *data);
 
 		/** OpenGL index of this buffer. */
 		GLuint getIndex() const;
-		
+
 		/** Size in bytes. */
 		GLsizeiptr getSize() const;
 	protected:

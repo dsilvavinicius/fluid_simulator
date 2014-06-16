@@ -27,8 +27,15 @@ add_executable (Tests
 	${OGL_PACK_CPP_DIR}/UniformBlockTest.cpp
 	${OGL_PACK_HEADER_DIR}/Test.h				${OGL_PACK_CPP_DIR}/Test.cpp)
 
-set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/Win64")
-set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")
+if (UNIX)
+	set (LIBS_DIR ${LIBS_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/linux/gtest")
+else (WIN32)
+	set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/Win64")
+	set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")
+else ()
+	message ("Unexpected operating system. Exiting prematurelly.")
+	return ()
+endif ()
 
 target_link_libraries (Tests ${LIBS_DIR})
 target_link_libraries (Tests Fluid_Engine)
