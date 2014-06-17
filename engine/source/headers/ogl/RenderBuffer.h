@@ -3,7 +3,7 @@
 
 #include <utility>
 #include <memory>
-#include <gl/glew.h>
+#include <GL/glew.h>
 #include <glm/glm.hpp>
 
 using namespace std;
@@ -23,9 +23,9 @@ namespace ogl
 			@param samples number of samples for multisample rendering. */
 		RenderBuffer(GLenum attachmentType, GLenum internalFormat, GLenum readFormat, GLenum readType,
 			vec2& size, const GLsizei samples = 1);
-		
+
 		~RenderBuffer();
-		
+
 	protected:
 		/** OpenGL index of this renderbuffer. */
 		GLuint m_index;
@@ -38,7 +38,7 @@ namespace ogl
 
 		/** OpenGL internal format. Used to specify storage for this buffer. GL_RGBA8, for example. */
 		GLenum m_internalFormat;
-		
+
 		/** OpenGL read format for this renderbuffer. GL_RGBA, for example. */
 		GLenum m_readFormat;
 

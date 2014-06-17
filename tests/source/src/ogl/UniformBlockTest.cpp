@@ -22,20 +22,21 @@ namespace ogl
 		protected:
 			void initUniforms() {
 				use();
-				
+
 				vec4 uniformValue{ 1.f, 1.f, 1.f, 1.f };
-				
+
 				vector<AnyUniformPtr> uniformVector;
 				uniformVector.push_back(AnyUniformPtr(new AnyUniform("uniform0", uniformValue)));
-				uniforms = UniformBlockPtr(new UniformBlock(string("Uniforms"), uniformVector));
+				string blockName = string("Uniforms");
+				uniforms = make_shared<UniformBlock>(blockName, uniformVector);
 				uniforms->transferToProgram(*this);
 			}
 		private:
 			UniformBlockPtr uniforms;
-			
+
 			static const string vertSource;
 			static const string fragSource;
-				
+
 		};
 
 		const string TestProgram::vertSource =

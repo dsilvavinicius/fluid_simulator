@@ -18,7 +18,7 @@ namespace ogl
 	{
 		// Dummy argc and argv;
 		int argc = 1;
-		char* argv = { "" };
+		char* argv = "";
 
 		glutInit(&argc, &argv);
 		glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);

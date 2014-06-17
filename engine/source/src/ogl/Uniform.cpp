@@ -2,8 +2,11 @@
 
 namespace ogl
 {
-	AnyUniform::~AnyUniform(){};
-	
+	AnyUniform::~AnyUniform()
+	{
+        free(m_rawValue);
+	};
+
 	string& AnyUniform::getName() { return m_name; }
 
 	GLvoid* AnyUniform::getRawValue() { return m_rawValue; }

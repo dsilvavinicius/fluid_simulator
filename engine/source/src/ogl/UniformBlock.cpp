@@ -30,17 +30,18 @@ namespace ogl
 	void UniformBlock::transferToProgram(Program& program)
 	{
 		program.use();
-		
+
 		GLuint programIndex = program.getIndex();
 		auto blockIndex = glGetUniformBlockIndex(programIndex, m_name.c_str());
-		GLint dataSize;
+		GLsizei dataSize;
 		glGetActiveUniformBlockiv(programIndex, blockIndex, GL_UNIFORM_BLOCK_DATA_SIZE, &dataSize);
 
 		OGL::checkError();
 
 		if (!m_buffer)
 		{
-			m_buffer = UniformBufferPtr(new UniformBuffer((GLsizei)dataSize, GL_STATIC_DRAW));
+			m_buffer = UniformBufferPtr(
+                new UniformBuffer(dataSize, GL_STATIC_DRAW));
 		}
 		m_buffer->update(programIndex, m_uniforms);
 

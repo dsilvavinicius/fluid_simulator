@@ -28,7 +28,7 @@ add_executable (Tests
 	${OGL_PACK_HEADER_DIR}/Test.h				${OGL_PACK_CPP_DIR}/Test.cpp)
 
 if (UNIX)
-	set (LIBS_DIR ${LIBS_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/linux/gtest")
+	set (LIBS_DIR ${LIBS_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/linux/libgtest.a")
 else (WIN32)
 	set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/tests/libraries/lib/Win64")
 	set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/gtest.lib")

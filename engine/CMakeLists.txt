@@ -39,7 +39,9 @@ add_library (Fluid_Engine
 	
 # Add libraries.
 if (UNIX)
-	set (LIBS_DIR ${LIBS_DIR} "freeglut, glew32, GL")
+	set (LIBS_DIR ${LIBS_DIR} "GL")
+	set (LIBS_DIR ${LIBS_DIR} "GLEW")
+	set (LIBS_DIR ${LIBS_DIR} "glut")
 else (WIN32)
 	set (LIBS_WIN64_DIR ${LIBS_WIN64_DIR} "${PROJECT_SOURCE_DIR}/engine/libraries/lib/Win64")
 	set (LIBS_DIR ${LIBS_DIR} "${LIBS_WIN64_DIR}/freeglut.lib")

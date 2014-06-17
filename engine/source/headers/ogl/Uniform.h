@@ -27,7 +27,7 @@ namespace ogl
 		template <typename T> T& getValue();
 
 		/** Typed API. Use when the value type is known. */
-		template <typename T> void setValue(T value);
+		template <typename T> void setValue(T& value);
 	private:
 		/** Base for all typed uniforms. */
 		class AbstractUniform
@@ -55,10 +55,10 @@ namespace ogl
 			string& getName() { return m_name; }
 
 			/** Typed getValue. */
-			T getValue() { return m_value; }
+			T& getValue() { return m_value; }
 
 			/** Typed setValue. */
-			void setValue(T value)
+			void setValue(T& value)
 			{
 				m_value = value;
 				m_anyUniform.m_rawValue = (GLvoid*)&m_value;
@@ -90,11 +90,12 @@ namespace ogl
 	template <typename T>
 	T& AnyUniform::getValue()
 	{
-		return dynamic_pointer_cast<Uniform<T>>(m_ptr)->getValue();
+        shared_ptr<Uniform<T>> typedUniform = dynamic_pointer_cast<Uniform<T>>(m_ptr);
+		return typedUniform->getValue();
 	}
 
 	template <typename T>
-	void AnyUniform::setValue(T value)
+	void AnyUniform::setValue(T& value)
 	{
 		dynamic_pointer_cast<Uniform<T>>(m_ptr)->setValue(value);
 	}

@@ -2,7 +2,7 @@
 #define COLOR_BUFFER_H
 
 #include <memory>
-#include <gl/glew.h>
+#include <GL/glew.h>
 
 #include "ogl/RenderBuffer.h"
 
@@ -12,10 +12,10 @@ namespace ogl {
 	public:
 		/** @copydoc RenderBuffer::RenderBuffer()
 			@param colorIndex is the index of this color buffer among the others (< GL_MAX_COLOR_ATTACHMENTS). */
-		ColorBuffer::ColorBuffer(GLuint colorIndex, GLenum internalFormat, GLenum readFormat, GLenum readType,
+		ColorBuffer(GLuint colorIndex, GLenum internalFormat, GLenum readFormat, GLenum readType,
 			vec2& size, const GLsizei samples = 1);
-		
-		ColorBuffer::~ColorBuffer();
+
+		~ColorBuffer();
 
 		/** Clear this buffer with the color. */
 		void clear(vec4 color);
