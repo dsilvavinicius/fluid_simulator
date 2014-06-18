@@ -17,6 +17,11 @@ namespace ogl
 
 	UniformBlock::~UniformBlock() {}
 
+    string& UniformBlock::getName()
+    {
+        return m_name;
+    }
+
 	template <typename T>
 	void UniformBlock::change(string uniformName, T value)
 	{
@@ -27,11 +32,11 @@ namespace ogl
 		return  m_bindingIndexSeed++;
 	}
 
-	void UniformBlock::transferToProgram(Program& program)
+    void UniformBlock::flushToProgram(ProgramInitializerPtr& program)
 	{
-		program.use();
+		program->use();
 
-		GLuint programIndex = program.getIndex();
+		GLuint programIndex = program->getIndex();
 		auto blockIndex = glGetUniformBlockIndex(programIndex, m_name.c_str());
 		GLsizei dataSize;
 		glGetActiveUniformBlockiv(programIndex, blockIndex, GL_UNIFORM_BLOCK_DATA_SIZE, &dataSize);

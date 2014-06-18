@@ -7,7 +7,7 @@
 using namespace utils;
 
 namespace ogl {
-	
+
 	const int ProgramInitializer::LOG_SIZE = 5000;
 
 	ProgramInitializer::ProgramInitializer(const string& vertSource, const string& fragSource) {
@@ -23,7 +23,7 @@ namespace ogl {
 
 		GLint linkFlag;
 		glGetProgramiv(m_index, GL_LINK_STATUS, &linkFlag);
-		
+
 		if (linkFlag != GL_TRUE) {
 			char log[LOG_SIZE];
 			glGetProgramInfoLog(m_index, LOG_SIZE, NULL, log);
@@ -33,7 +33,6 @@ namespace ogl {
 
 		OGL::checkError();
 	}
-
 
 	ProgramInitializer::~ProgramInitializer(){
 		glDeleteShader(m_vert);
@@ -47,10 +46,16 @@ namespace ogl {
 		return m_index;
 	}
 
+    void ProgramInitializer::use()
+    {
+        glUseProgram(m_index);
+		OGL::checkError();
+    }
+
 	GLint ProgramInitializer::createShader(const string& source, const GLenum type) {
 		const GLchar* sourceC = source.c_str();
 		const GLint lenght = (GLint) source.length();
-		
+
 		GLint shader = glCreateShader(type);
 
 		if (shader == 0) {

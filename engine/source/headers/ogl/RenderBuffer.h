@@ -42,7 +42,7 @@ namespace ogl
 		/** OpenGL read format for this renderbuffer. GL_RGBA, for example. */
 		GLenum m_readFormat;
 
-		/** OpenGL data type for this renderbuffer. GL_FLOAT, for example. */
+		/** OpenGL read data type for this renderbuffer. GL_FLOAT, for example. */
 		GLenum m_readType;
 
 		/** Number of samples of this renderbuffer. */

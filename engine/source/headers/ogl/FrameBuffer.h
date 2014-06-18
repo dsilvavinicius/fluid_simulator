@@ -4,7 +4,7 @@
 #include <memory>
 #include <map>
 #include <vector>
-#include <gl/glew.h>
+#include <GL/glew.h>
 
 #include "ogl/RenderBuffer.h"
 #include "ogl/ColorBuffer.h"
@@ -26,7 +26,7 @@ namespace ogl {
 		RenderBufferPtr getStencilBuffer();
 
 		/** Copies the contents of this framebuffer to the other.*/
-		void blit(FrameBufferPtr& frameBuffer);
+		void blit(shared_ptr<FrameBuffer>& frameBuffer);
 	protected:
 		/** OpenGL framebuffer index. */
 		GLuint m_index;

@@ -10,10 +10,10 @@
 using namespace std;
 
 /**
- * Initializer for OpenGL shader programs. Ensure that a program is compiled and have their uniforms initialized. 
+ * Initializer for OpenGL shader programs. Ensure that a program is compiled and have their uniforms initialized.
  */
 namespace ogl {
-	
+
 	class ProgramInitializer
 	{
 	public:
@@ -29,6 +29,9 @@ namespace ogl {
 
 		/** Gets the OpenGL index of this Program. */
 		GLuint getIndex();
+
+		/** Uses the OpenGL program initialized by this instance. */
+		void use();
 	protected:
 		/** Final OpenGL shader program identifier. */
 		GLuint m_index;
@@ -44,10 +47,10 @@ namespace ogl {
 		* Creates a shader given the source and type.
 		*/
 		GLint createShader(const string& source, const GLenum type);
-		
+
 		void compileShader(GLuint shader);
 	};
-	
+
 	typedef shared_ptr<ProgramInitializer> ProgramInitializerPtr;
 }
 

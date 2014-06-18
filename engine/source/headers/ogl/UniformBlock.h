@@ -9,10 +9,11 @@
 #include "ogl/UniformBuffer.h"
 
 using namespace std;
-using namespace ogl;
 
 namespace ogl
 {
+	class Program; // Fixing circular dependency.
+
 	/**
 	* Represents an OpenGL's uniform block and should be used to initialize shader programs' uniform data.
 	* Can be shared among Programs.
@@ -23,12 +24,14 @@ namespace ogl
 		UniformBlock(string& name, vector<AnyUniformPtr>& uniforms);
 		~UniformBlock();
 
+        string& getName();
+
 		/** Changes the value of an uniform */
 		template <typename T>
 		void change(string uniformName, T value);
 
-		/** Transfer this uniform block to the passed program. */
-		void transferToProgram(Program& program);
+		/** Flushes this uniform block to the passed program device memory. */
+		void flushToProgram(ProgramInitializerPtr& program);
 
 	protected:
 		/** Uniform map. The key is the name of the uniform in shader and the value is the actual uniform. */

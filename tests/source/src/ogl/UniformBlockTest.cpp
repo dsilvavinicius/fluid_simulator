@@ -14,25 +14,12 @@ namespace ogl
 		class TestProgram : Program
 		{
 		public:
-			TestProgram() : Program(vertSource, fragSource) {
-				initUniforms();
+			TestProgram(vector<UniformBlockPtr>& uniformBlocks) : Program(vertSource, fragSource, uniformBlocks)
+			{
 			}
 
 			~TestProgram() {}
-		protected:
-			void initUniforms() {
-				use();
-
-				vec4 uniformValue{ 1.f, 1.f, 1.f, 1.f };
-
-				vector<AnyUniformPtr> uniformVector;
-				uniformVector.push_back(AnyUniformPtr(new AnyUniform("uniform0", uniformValue)));
-				string blockName = string("Uniforms");
-				uniforms = make_shared<UniformBlock>(blockName, uniformVector);
-				uniforms->transferToProgram(*this);
-			}
 		private:
-			UniformBlockPtr uniforms;
 
 			static const string vertSource;
 			static const string fragSource;
@@ -63,7 +50,18 @@ namespace ogl
 			void SetUp()
 			{
 				Test::SetUp();
-				m_program = TestProgramPtr(new TestProgram());
+
+				vec4 uniformValue{ 1.f, 1.f, 1.f, 1.f };
+
+				vector<AnyUniformPtr> uniformVector;
+				uniformVector.push_back(AnyUniformPtr(new AnyUniform("uniform0", uniformValue)));
+
+				vector<UniformBlockPtr> uniformBlocks;
+				string blockName = string("Uniforms");
+				UniformBlockPtr uniformBlock = make_shared<UniformBlock>(blockName, uniformVector);
+                uniformBlocks.push_back(uniformBlock);
+
+				m_program = TestProgramPtr(new TestProgram(uniformBlocks));
 			}
 
 			TestProgramPtr m_program;

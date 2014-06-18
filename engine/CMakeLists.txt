@@ -16,11 +16,6 @@ create_file_groups (${ENGINE_HEADER_DIR} ${CPP_DIR})
 add_library (Fluid_Engine
 	${INFRA_PACK_HEADER_DIR}/Utils.h			${INFRA_PACK_CPP_DIR}/Utils.cpp
 	
-	${ENGINE_PACK_HEADER_DIR}/Fluid3D.h			${ENGINE_PACK_CPP_DIR}/Fluid3D.cpp
-	${ENGINE_PACK_HEADER_DIR}/Boundary.h		${ENGINE_PACK_CPP_DIR}/Boundary.cpp
-	${ENGINE_PACK_HEADER_DIR}/RayData.h			${ENGINE_PACK_CPP_DIR}/RayData.cpp
-	${ENGINE_PACK_HEADER_DIR}/RayDataBackPass.h	${ENGINE_PACK_CPP_DIR}/RayDataBackPass.cpp
-	
 	${OGL_PACK_HEADER_DIR}/OGL.h				${OGL_PACK_CPP_DIR}/OGL.cpp
 	${OGL_PACK_HEADER_DIR}/Application.h		${OGL_PACK_CPP_DIR}/Application.cpp
 	${OGL_PACK_HEADER_DIR}/Program.h			${OGL_PACK_CPP_DIR}/Program.cpp
@@ -33,6 +28,11 @@ add_library (Fluid_Engine
 	${OGL_PACK_HEADER_DIR}/FrameBuffer.h		${OGL_PACK_CPP_DIR}/FrameBuffer.cpp
 	${OGL_PACK_HEADER_DIR}/RenderBuffer.h		${OGL_PACK_CPP_DIR}/RenderBuffer.cpp
 	${OGL_PACK_HEADER_DIR}/ColorBuffer.h		${OGL_PACK_CPP_DIR}/ColorBuffer.cpp
+
+	${ENGINE_PACK_HEADER_DIR}/Fluid3D.h			${ENGINE_PACK_CPP_DIR}/Fluid3D.cpp
+	${ENGINE_PACK_HEADER_DIR}/Boundary.h		${ENGINE_PACK_CPP_DIR}/Boundary.cpp
+	${ENGINE_PACK_HEADER_DIR}/RayData.h			${ENGINE_PACK_CPP_DIR}/RayData.cpp
+	${ENGINE_PACK_HEADER_DIR}/RayDataBackPass.h	${ENGINE_PACK_CPP_DIR}/RayDataBackPass.cpp
 	
 	# Shaders
 	${SHADER_DIR}/RayDataBackPass.vert			${SHADER_DIR}/RayDataBackPass.frag)
