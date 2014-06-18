@@ -2,10 +2,7 @@
 
 namespace ogl
 {
-	AnyUniform::~AnyUniform()
-	{
-        free(m_rawValue);
-	};
+	AnyUniform::~AnyUniform() {};
 
 	string& AnyUniform::getName() { return m_name; }
 
