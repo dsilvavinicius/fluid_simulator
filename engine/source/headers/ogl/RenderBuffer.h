@@ -26,6 +26,8 @@ namespace ogl
 
 		~RenderBuffer();
 
+        GLenum getAttachmentType();
+
 	protected:
 		/** OpenGL index of this renderbuffer. */
 		GLuint m_index;

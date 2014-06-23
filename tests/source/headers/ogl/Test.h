@@ -15,7 +15,7 @@ namespace ogl
 			virtual void SetUp();
 			virtual void TearDown();
 
-		private:
+		protected:
 			ApplicationPtr m_app;
 		};
 	}

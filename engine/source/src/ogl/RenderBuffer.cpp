@@ -28,4 +28,9 @@ namespace ogl
 	{
 		glDeleteRenderbuffers(1, &m_index);
 	}
+
+	GLenum RenderBuffer::getAttachmentType()
+	{
+        return m_attachmentType;
+	}
 }

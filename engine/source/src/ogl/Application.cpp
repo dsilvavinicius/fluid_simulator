@@ -4,14 +4,22 @@
 
 namespace ogl
 {
-	Application::Application() {}
+	Application::Application(DisplaySettingsPtr& displaySettings)
+	{
+        m_displaySettings = displaySettings;
+	}
 
 
 	Application::~Application() {}
 
 	void Application::tearDown()
 	{
-		//glutLeaveMainLoop();
+		glutLeaveMainLoop();
+	}
+
+	DisplaySettings Application::getDisplaySettings()
+	{
+        return *m_displaySettings;
 	}
 
 	void Application::createMainWindow()

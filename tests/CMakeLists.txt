@@ -24,7 +24,10 @@ add_executable (Tests
 	${CPP_DIR}/main.cpp
 	
 	${ENGINE_PACK_CPP_DIR}/RayDataBackPassTest.cpp
+	
 	${OGL_PACK_CPP_DIR}/UniformBlockTest.cpp
+	${OGL_PACK_CPP_DIR}/FrameBufferTest.cpp
+	${OGL_PACK_HEADER_DIR}/SimpleTestProgram.h	${OGL_PACK_CPP_DIR}/SimpleTestProgram.cpp
 	${OGL_PACK_HEADER_DIR}/Test.h				${OGL_PACK_CPP_DIR}/Test.cpp)
 
 if (UNIX)

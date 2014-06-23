@@ -1,6 +1,10 @@
 #include "ogl/DisplaySettings.h"
 
-namespace ogl {
+namespace ogl
+{
+    const int DisplaySettings::DEFAULT_WIDTH;
+    const int DisplaySettings::DEFAULT_HEIGHT;
+
 	DisplaySettings::DisplaySettings(int resHeight, int resWidth) {
 		m_resHeight = resHeight;
 		m_resWidth = resWidth;

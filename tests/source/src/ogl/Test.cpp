@@ -1,4 +1,5 @@
 #include "ogl/Test.h"
+#include "ogl/DisplaySettings.h"
 
 using namespace ogl;
 
@@ -8,7 +9,10 @@ namespace ogl
 	{
 		void Test::SetUp()
 		{
-			m_app = make_shared<Application>();
+            DisplaySettingsPtr displaySettings = make_shared<DisplaySettings>(
+                DisplaySettings::DEFAULT_WIDTH, DisplaySettings::DEFAULT_HEIGHT);
+
+			m_app = make_shared<Application>(displaySettings);
 			m_app->createMainWindow();
 		}
 
